@@ -1,0 +1,56 @@
+{
+  "name": "generator-reqtangular",
+  "version": "0.0.1",
+  "description": "yeoman-angular-require-bootstrap-less-generator",
+  "license": "Apache License",
+  "main": "app/index.js",
+  "repository": "https://github.com/codebusters/generator-reqtangular",
+  "author": {
+    "name": "codeBusters",
+    "email": "info@codebusters.es",
+    "url": "http://www.codebusters.es"
+  },
+  "contributors": [
+    {
+      "name": "Leonardo Miceli",
+      "email": "lmiceli@codebusters.es"
+    },
+    {
+      "name": "Thorsten Scherler",
+      "email": "thorsten@codebusters.es"
+    },
+    {
+      "name": "Jose Figueruela Fernández",
+      "email": "jfigueruela@codebusters.es"
+    }
+  ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "angularjs",
+    "requirejs",
+    "webapp",
+    "grunt",
+    "bootstrap",
+    "less"
+  ],
+  "dependencies": {
+    "yeoman-generator": "~0.16.0",
+    "chalk": "~0.4.0",
+    "yosay": "^0.1.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  }
+}

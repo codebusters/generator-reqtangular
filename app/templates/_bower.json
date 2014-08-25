@@ -1,0 +1,27 @@
+{
+  "name": "<%= appName %>",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "1.2.16",
+    "json3": "~3.3.1",
+    "requirejs": "~2.1.14",
+    "es5-shim": "~3.1.0",
+    "bootstrap": "~3.2.0",
+    "angular-resource": "1.2.16",
+    "angular-cookies": "1.2.16",
+    "angular-sanitize": "1.2.16",
+    "angular-animate": "1.2.16",
+    "angular-touch": "1.2.16",
+    "angular-route": "1.2.16",
+    "requirejs-text": "~2.0.12",
+    "angular-translate": "~2.2.0",
+    "angular-translate-storage-local": "~2.2.0",
+    "angular-translate-loader-static-files": "~2.2.0"<% if (less) { %>,
+    "less": "~1.7.4"<% } %>
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.16",
+    "angular-scenario": "1.2.16"
+  },
+  "appPath": "app"
+}
