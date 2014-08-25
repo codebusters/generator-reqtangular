@@ -20,6 +20,6 @@ Run `yo reqtangular`
 ```
 
 Run `grunt` for building and `grunt serve` for preview
-
+```
 
 > [codeBusters S.L.](http://wwww.codebusters.es)
