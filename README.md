@@ -22,4 +22,4 @@ Run `yo reqtangular`
 Run `grunt` for building and `grunt serve` for preview
 ```
 
-> [codeBusters S.L.](http://wwww.codebusters.es)
+> [codeBusters S.L.](http://www.codebusters.es)
