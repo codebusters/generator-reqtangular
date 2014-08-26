@@ -1,6 +1,7 @@
 /*global describe, beforeEach, it */
 'use strict';
 var path = require('path');
+//var testUtil = require('../common/testUtil');
 var helpers = require('yeoman-generator').test;
 
 describe('reqtangular:module generator', function () {
@@ -31,11 +32,7 @@ describe('reqtangular:module generator', function () {
         'avoid-info': true
       });
 
-      helpers.mockPrompt(this.module, {
-        'moduleName': moduleName
-      });
-
-      // need app previousley ran
+      // need app previously ran
       this.app.run({}, function () {
         done();
       });
@@ -44,6 +41,11 @@ describe('reqtangular:module generator', function () {
   });
 
   it('creates expected files for reqtangular:module', function (done) {
+
+    helpers.mockPrompt(this.module, {
+      'moduleName': moduleName
+    });
+
     var expected = [
       // add files you expect to exist here.
       'app/scripts/modules/test',
@@ -61,6 +63,10 @@ describe('reqtangular:module generator', function () {
   });
 
   it('module applies moduleName to files', function (done) {
+
+    helpers.mockPrompt(this.module, {
+      'moduleName': moduleName
+    });
 
     this.module.run({}, function () {
 
@@ -108,9 +114,42 @@ describe('reqtangular:module generator', function () {
         new RegExp('\'TestModule\'')
       );
 
-      // navigation
+      done();
+    });
+
+  });
+
+  var addedToNavRegex = '<li ng-class="{ active: menuCtrl\\.isSelected\\(\'test\'\\) }">\\s*<a ng-click="menuCtrl\\.selectMenu\\(\'test\'\\)" ng-href="#/test" translate="test"></a></li>\\s*<!-- navAnchor \\(do not delete!\\)-->';
+
+  it('adds link to nav', function (done) {
+
+    helpers.mockPrompt(this.module, {
+      'moduleName': moduleName,
+      'addToNav': true
+    });
+
+    this.module.run({}, function () {
+
       helpers.assertFileContent('app/scripts/modules/main/templates/main.html',
-        new RegExp('<li ng-class="{ active: menuCtrl\\.isSelected\\(\'test\'\\) }">\\s*<a ng-click="menuCtrl\\.selectMenu\\(\'test\'\\)" ng-href="#/test" translate="test"></a></li>\\s*<!-- navAnchor \\(do not delete!\\)-->')
+        new RegExp(addedToNavRegex)
+      );
+
+      done();
+    });
+
+  });
+
+  it('does not add link to nav', function (done) {
+
+    helpers.mockPrompt(this.module, {
+      'moduleName': moduleName,
+      'addToNav': false
+    });
+
+    this.module.run({}, function () {
+
+      helpers.assertNoFileContent('app/scripts/modules/main/templates/main.html',
+        new RegExp(addedToNavRegex)
       );
 
       done();

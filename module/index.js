@@ -40,6 +40,21 @@ var NgRequireModuleGenerator = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  askForNavLink: function() {
+    var done = this.async();
+
+    this.prompt([{
+        type: 'confirm',
+        name: 'addToNav',
+        message: 'Would you like a link to your new module on the nav bar?',
+        default: true
+      }], function(props) {
+      this.addToNav = props.addToNav;
+
+      done();
+    }.bind(this));
+  },
+
   module: function () {
 
     this.mkdir(this.modulePath);
@@ -67,16 +82,20 @@ var NgRequireModuleGenerator = yeoman.generators.Base.extend({
 
   addToNavigation : function () {
 
-    var mainHtmlFilePath = path.join(this.appPath, 'scripts/modules/main/templates/main.html');
+    if (this.addToNav) {
 
-    angularUtils.injectIntoNav(
-      mainHtmlFilePath,
-      "<!-- navAnchor (do not delete!)-->",
-      this.engine("<li ng-class=\"{ active: menuCtrl.isSelected('<%= moduleName %>') }\"><a ng-click=\"menuCtrl.selectMenu('<%= moduleName %>')\" ng-href=\"#/<%= moduleName %>\" translate=\"<%= moduleName %>\"></a></li>\n", this)
-    );
+      var mainHtmlFilePath = path.join(this.appPath, 'scripts/modules/main/templates/main.html');
 
-    if (!this.options['avoid-info']) {
-      this.log('All done, a link has been added to navigation bar, please add corresponding translations to files in app/scripts/modules/lang/translations/');
+      angularUtils.injectIntoNav(
+        mainHtmlFilePath,
+        "<!-- navAnchor (do not delete!)-->",
+        this.engine("<li ng-class=\"{ active: menuCtrl.isSelected('<%= moduleName %>') }\"><a ng-click=\"menuCtrl.selectMenu('<%= moduleName %>')\" ng-href=\"#/<%= moduleName %>\" translate=\"<%= moduleName %>\"></a></li>\n", this)
+      );
+
+      if (!this.options['avoid-info']) {
+        this.log('All done, a link has been added to navigation bar, please add corresponding translations to files in app/scripts/modules/lang/translations/');
+      }
+
     }
 
   }
