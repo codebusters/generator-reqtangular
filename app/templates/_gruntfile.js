@@ -18,9 +18,6 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   //Specify an ENV configuration for future tasks in the chain
-  grunt.loadNpmTasks('grunt-env');
-
-  grunt.loadNpmTasks('grunt-preprocess');
 
   // Configurable paths for the application
   var appConfig = {
@@ -530,7 +527,6 @@ module.exports = function(grunt) {
   ]);
 
   <% if (less) { %>
-  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.registerTask('styles', ['less']);
   <% } %>
 };

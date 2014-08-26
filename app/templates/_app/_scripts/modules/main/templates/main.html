@@ -1,6 +1,8 @@
 <!-- Add your site or application content here -->
 <div class="container">
+
   <div class="header">
+    <a href="http://www.codebusters.es" target="_blank"><img src="images/codeBusters.png" alt="codebusters logo"></a><br>
     <ul class="nav nav-pills pull-right" ng-controller="MainMenuController as menuCtrl">
       <li ng-class="{ active: menuCtrl.isSelected('HOME') }">
         <a ng-click="menuCtrl.selectMenu('HOME')" ng-href="#" translate="HOME"></a>
@@ -11,7 +13,7 @@
       <li ng-class="{ active: menuCtrl.isSelected('CONTACT') }">
         <a ng-click="menuCtrl.selectMenu('CONTACT')" ng-href="#/contact" translate="CONTACT"></a>
       </li>
-<!-- navAnchor (do not delete!)-->
+      <!-- navAnchor (do not delete!)-->
     </ul>
   </div>
 
@@ -19,6 +21,10 @@
   <div ng-view></div>
 
   <div class="footer">
-    <p class="text-muted">{{appInfo.name}} v{{appInfo.version}} Mode:{{envMode}}</p>
+    <div class="row">
+      <div class="col-md-3"><p class="text-muted smallText">{{appInfo.name}} v{{appInfo.version}} Mode:{{envMode}}</p></div>
+      <div class="col-md-3"><div id="footerBrand" class="smallText">code<span>Busters</span> s.l. <img src="favicon.ico"> 2014</div></div>
+      <div class="col-md-6"><img class="img-responsive" src="images/reqtangular_small_brands.png" alt="generator-reqtangular"></div>
+    </div>
   </div>
 </div>
