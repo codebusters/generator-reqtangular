@@ -1,11 +1,8 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
-var angularUtils = require('../util.js');
+var angularUtils = require('../common/util.js');
 var path = require('path');
-
-// TODO: take into account following idea from aaron
-//util.inherits(Generator, ScriptBase);
 
 var NgRequireModuleGenerator = yeoman.generators.Base.extend({
 
