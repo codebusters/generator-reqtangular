@@ -31,7 +31,18 @@ body {
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
+#footerBrand {
+  color: #000;
+  font-weight: 300;
+}
 
+#footerBrand span{
+  color: #BC001A;
+  font-weight: 300;
+}
+.smallText {
+  font-size: 0.8em;
+}
 /* Customize container */
 @media (min-width: 768px) {
   .container {
