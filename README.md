@@ -23,7 +23,7 @@ mkdir my-new-project && cd $_
 Run `yo reqtangular`
 ```
 
-Run `grunt` for building and `grunt serve` for preview
+Run `grunt dist` for building and `grunt serve` for preview
 ```
 ## Generators
 
