@@ -2,7 +2,6 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: gainsboro;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -43,6 +42,12 @@ body {
 .smallText {
   font-size: 0.8em;
 }
+.navbar-fixed-top {
+  background-color: #FFF;
+}
+.pageContainer {
+  
+}
 /* Customize container */
 @media (min-width: 768px) {
   .container {
@@ -70,7 +75,9 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
-
+.viewContainer {
+  margin-top: 10%;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */

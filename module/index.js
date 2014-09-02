@@ -11,7 +11,7 @@ var NgRequireModuleGenerator = yeoman.generators.Base.extend({
     var done = this.async();
 
     if (!this.options['skip-welcome-message']) {
-      this.log(yosay('Welcome to the marvelous NgRequire module generator!'));
+      this.log(yosay('Welcome to the marvelous Reqtangular module generator!'));
     }
 
     var prompts = [{

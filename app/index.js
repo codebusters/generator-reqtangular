@@ -18,7 +18,9 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
         skipMessage: this.options['skip-install'],
         callback: function() {
           console.log(chalk.bold.green('\nEverything is ready!, just run')
-                  + chalk.bold.yellow(' grunt serve.'));
+                  + chalk.bold.yellow(' grunt serve')
+                  + chalk.bold.green(' or build distribution version with')
+                  + chalk.bold.yellow(' grunt dist'));
         }
       });
     });
@@ -97,24 +99,6 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
       }
     }.bind(this));
   },
-  askForTheme: function() {
-    var done = this.async();
-    var prompts = [
-      {
-        type: "list",
-        name: "theme",
-        message: "Choose theme",
-        choices: ["Snow", "Stark"],
-        filter: function(val) {
-          return val.toLowerCase();
-        }
-      }
-    ];
-    this.prompt(prompts, function(props) {
-      this.theme = props.theme;
-      done();
-    }.bind(this));
-  },
   app: function() {
     var context = {
       appConfig: {
@@ -137,7 +121,6 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
     this.template('_gruntfile.js', 'Gruntfile.js', context);
     this.copy('_karma.conf.js', 'karma.conf.js');
     this.copy('_karma-e2e.conf.js', 'karma-e2e.conf.js');
-
   },
   scaffoldFolders: function() {
     this.mkdir('app');
@@ -157,13 +140,14 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
     this.copy('_app/_favicon.ico', 'app/favicon.ico');
     this.copy('_app/htaccess', 'app/.htaccess');
     this.copy('_app/_robots.txt', 'app/robots.txt');
+    this.copy('_app/_vendor.js', 'app/vendor.js');
 
     this.template('_app/_index.template.html', 'app/index.template.html', context);
     //Copy style file
     if (this.less) {
-      this.copy('_app/_styles/'+this.theme+'.less', 'app/styles/main.less');
+      this.copy('_app/_styles/codebusters.less', 'app/styles/main.less');
     } else {
-      this.copy('_app/_styles/'+this.theme+'.css', 'app/styles/main.css');
+      this.copy('_app/_styles/codebusters.css', 'app/styles/main.css');
     }
   },
   projectFiles: function() {

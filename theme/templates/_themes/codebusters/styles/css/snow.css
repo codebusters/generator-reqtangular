@@ -42,6 +42,12 @@ body {
 .smallText {
   font-size: 0.8em;
 }
+.navbar-fixed-top {
+  background-color: #FFF;
+}
+.viewContainer {
+  margin-top: 10%;
+}
 /* Customize container */
 @media (min-width: 768px) {
   .container {

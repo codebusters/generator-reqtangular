@@ -1,24 +1,43 @@
 <!-- Add your site or application content here -->
+
 <div class="container">
+  <!-- Navigation -->
+  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+        <a href="http://www.codebusters.es" target="_blank"><img src="images/codeBusters_small.png" alt="codebusters logo"></a>
+      </div>
 
-  <div class="header">
-    <a href="http://www.codebusters.es" target="_blank"><img src="images/codeBusters.png" alt="codebusters logo"></a><br>
-    <ul class="nav nav-pills pull-right" ng-controller="MainMenuController as menuCtrl">
-      <li ng-class="{ active: menuCtrl.isSelected('HOME') }">
-        <a ng-click="menuCtrl.selectMenu('HOME')" ng-href="#" translate="HOME"></a>
-      </li>
-      <li ng-class="{ active: menuCtrl.isSelected('ABOUT') }">
-        <a ng-click="menuCtrl.selectMenu('ABOUT')" ng-href="#/about" translate="ABOUT"></a>
-      </li>
-      <li ng-class="{ active: menuCtrl.isSelected('CONTACT') }">
-        <a ng-click="menuCtrl.selectMenu('CONTACT')" ng-href="#/contact" translate="CONTACT"></a>
-      </li>
-      <!-- navAnchor (do not delete!)-->
-    </ul>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <ul class="nav nav-pills pull-right" ng-controller="MainMenuController as menuCtrl">
+          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+          <li class="hidden">
+            <a href="#page-top"></a>
+          </li>
+          <li ng-class="{ active: menuCtrl.isSelected('HOME') }">
+            <a ng-click="menuCtrl.selectMenu('HOME')" ng-href="#" translate="HOME"></a>
+          </li>
+          <li ng-class="{ active: menuCtrl.isSelected('ABOUT') }">
+            <a ng-click="menuCtrl.selectMenu('ABOUT')" ng-href="#/about" translate="ABOUT"></a>
+          </li>
+          <li ng-class="{ active: menuCtrl.isSelected('CONTACT') }">
+            <a ng-click="menuCtrl.selectMenu('CONTACT')" ng-href="#/contact" translate="CONTACT"></a>
+          </li>
+          <!-- navAnchor (do not delete!)-->
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+      <!-- /.container -->
+  </nav>
+
+  <div class="viewContainer">
+    <div ng-view></div>
   </div>
-
   <lang-directive></lang-directive>
-  <div ng-view></div>
 
   <div class="footer">
     <div class="row">
