@@ -3,8 +3,6 @@ define([
   'angular',
   //Self module components
   './directive',
-//  './routing'
-//  './service',
 ], function(angular) {
   var module = angular.module('MainModule',
           [
