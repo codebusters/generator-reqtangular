@@ -1,12 +1,17 @@
-generator-reqtangular
+
+![](http://www.codebusters.es/assets/projects/reqtangular/reqtangular.png)
+
+Generator-Reqtangular
 =====================
+
 Scaffolding generator for new web projects. Preset integration with AngularJS and Require.
 
-yeoman-angular-require-bootstrap-less-generator
+Based on generation framework Yeoman, reqtangular generates new integrated structures and preconfigured to start developing web based applications and RequireJSs AngularJS with Bootstrap and Less.
 
 
+![](http://www.codebusters.es/assets/projects/reqtangular/reqtangular_small_brands.png)
 
-![](http://www.codebusters.es/assets/projects/reqtangular/generator-reqtangular_white.png)
+
 
 
 ## Usage
