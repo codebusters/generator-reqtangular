@@ -6,7 +6,7 @@ yeoman-angular-require-bootstrap-less-generator
 
 
 
-![](http://www.codebusters.es/assets/resources/generator-reqtangular.png)
+![](http://www.codebusters.es/assets/projects/reqtangular/generator-reqtangular.png)
 
 
 ## Usage
