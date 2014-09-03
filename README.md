@@ -1,5 +1,5 @@
 
-![](http://www.codebusters.es/assets/projects/reqtangular/reqtangular.png)
+![](http://www.codebusters.es/assets/projects/reqtangular/reqtangular_logo_728.png)
 
 Generator-Reqtangular
 =====================
