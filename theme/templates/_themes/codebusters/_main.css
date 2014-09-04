@@ -45,8 +45,8 @@ body {
 .navbar-fixed-top {
   background-color: #FFF;
 }
-.pageContainer {
-  
+.viewContainer {
+  margin-top: 10%;
 }
 /* Customize container */
 @media (min-width: 768px) {
@@ -94,3 +94,4 @@ body {
     border-bottom: 0;
   }
 }
+

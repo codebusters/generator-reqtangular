@@ -40,7 +40,7 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
         type: 'input',
         name: 'appName',
         message: 'How would you like to name your application?',
-        default: 'codeBusters'
+        default: 'reqtangular'
       }];
 
     this.prompt(prompts, function(props) {

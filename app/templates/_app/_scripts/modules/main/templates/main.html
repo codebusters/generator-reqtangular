@@ -1,49 +1,45 @@
-<!-- Add your site or application content here -->
+<!-- Navigation -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">{{appInfo.name}}</a>
+    </div>
 
-<div class="container">
-  <!-- Navigation -->
-  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-          <i class="fa fa-bars"></i>
-        </button>
-        <a href="http://www.codebusters.es" target="_blank"><img src="images/reqtangular_logo.png" alt="codebusters logo"></a>
-      </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" ng-controller="MainMenuController as menuCtrl">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li ng-class="{ active: menuCtrl.isSelected('HOME') }">
+          <a ng-click="menuCtrl.selectMenu('HOME')" ng-href="#" translate="HOME"></a>
+        </li>
+        <li ng-class="{ active: menuCtrl.isSelected('CONTACT') }">
+          <a ng-click="menuCtrl.selectMenu('CONTACT')" ng-href="#/contact" translate="CONTACT"></a>
+        </li>
+        <!-- navAnchor (do not delete!)-->
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+    <!-- /.container -->
+</nav>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-        <ul class="nav nav-pills pull-right" ng-controller="MainMenuController as menuCtrl">
-          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-          <li class="hidden">
-            <a href="#page-top"></a>
-          </li>
-          <li ng-class="{ active: menuCtrl.isSelected('HOME') }">
-            <a ng-click="menuCtrl.selectMenu('HOME')" ng-href="#" translate="HOME"></a>
-          </li>
-          <li ng-class="{ active: menuCtrl.isSelected('ABOUT') }">
-            <a ng-click="menuCtrl.selectMenu('ABOUT')" ng-href="#/about" translate="ABOUT"></a>
-          </li>
-          <li ng-class="{ active: menuCtrl.isSelected('CONTACT') }">
-            <a ng-click="menuCtrl.selectMenu('CONTACT')" ng-href="#/contact" translate="CONTACT"></a>
-          </li>
-          <!-- navAnchor (do not delete!)-->
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-      <!-- /.container -->
-  </nav>
+<div ng-view></div>
+<lang-directive></lang-directive>
 
-  <div class="viewContainer">
-    <div ng-view></div>
-  </div>
-  <lang-directive></lang-directive>
-
-  <div class="footer">
+<footer>
+  <div class="container">
     <div class="row">
       <div class="col-md-3"><p class="text-muted smallText">{{appInfo.name}} v{{appInfo.version}} Mode:{{envMode}}</p></div>
-      <div class="col-md-3"><div id="footerBrand" class="smallText">code<span>Busters</span> s.l. <img src="favicon.ico"> 2014</div></div>
-      <div class="col-md-6"><img class="img-responsive" src="images/reqtangular_small_brands.png" alt="generator-reqtangular"></div>
+      <div class="col-md-3"><div id="footerBrand" class="smallText"><p class="text-muted smallText">code<span>Busters</span> s.l. <img src="favicon.ico"> 2014</p></div></div>
+      <div class="col-md-6">
+        <img class="img-responsive" src="images/reqtangular_logo.png" alt="reqtangular logo" style="width: 50px">
+        <img class="img-responsive" src="images/reqtangular_small_brands.png" alt="generator-reqtangular">
+      </div>
     </div>
   </div>
-</div>
+</footer>

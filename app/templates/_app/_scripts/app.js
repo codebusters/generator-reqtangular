@@ -4,7 +4,6 @@ define(['angular',
   'modules/lang/controller',
   'modules/main/controller',
   'modules/home/controller',
-  'modules/about/controller',
   'modules/contact/controller'
 
 ]/*deps*/, function(angular)/*invoke*/ {
@@ -24,7 +23,6 @@ define(['angular',
             'LangModule',
             'MainModule',
             'HomeModule',
-            'AboutModule',
             'ContactModule',
             /*angJSDeps*/
             'ngCookies',

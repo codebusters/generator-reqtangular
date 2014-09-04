@@ -17,14 +17,12 @@ var NgRequireModuleGenerator = yeoman.generators.Base.extend({
       this.themePath = path.join('/templates/_themes/', this.arguments[0]);
       done();
     }
-//    setTimeout(function() {
-//    }, 3000);
     var prompts = [
       {
         type: "list",
         name: "theme",
         message: "Choose theme",
-        choices: ["codeBusters", "Grayscale"],
+        choices: ["codeBusters", "Grayscale", "Business"],
         filter: function(val) {
           return val.toLowerCase();
         },
@@ -53,6 +51,7 @@ var NgRequireModuleGenerator = yeoman.generators.Base.extend({
   },
   copyFiles: function() {
     this.directory(__dirname + this.themePath + '/images', 'app/images');
+    this.directory(__dirname + this.themePath + '/fonts', 'app/fonts');
   }
 });
 
