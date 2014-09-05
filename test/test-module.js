@@ -1,6 +1,6 @@
 /*global describe, beforeEach, it */
 'use strict';
-var path = require('path');
+/* var path = require('path');
 //var testUtil = require('../common/testUtil');
 var helpers = require('yeoman-generator').test;
 
@@ -160,3 +160,4 @@ describe('reqtangular:module generator', function () {
 
 
 });
+*/

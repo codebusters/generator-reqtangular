@@ -5,11 +5,71 @@ var angularUtils = require('../common/util.js');
 var path = require('path');
 
 var AboutUsModuleGenerator = yeoman.generators.Base.extend({
-  moduleName: function() {
+  askForContactData: function() {
+    var done = this.async();
     if (!this.options['skip-welcome-message']) {
-      this.log(yosay('Welcome to the marvelous Reqtangular about us module generator!'));
+      this.log(yosay('Welcome to the marvelous Reqtangular contact module generator!'));
     }
-    var moduleName = this.options['moduleName'] || 'about';
+    var questions = [
+      {
+        type: 'input',
+        name: 'email',
+        message: 'Enter e-mail'
+      },
+      {
+        type: 'input',
+        name: 'phone',
+        message: 'Enter phone number'
+      },
+      {
+        type: 'input',
+        name: 'address',
+        message: 'Enter address'
+      },
+      {
+        type: 'input',
+        name: 'city',
+        message: 'Enter city'
+      },
+      {
+        type: 'input',
+        name: 'pobox',
+        message: 'Enter PO Box'
+      },
+      {
+        type: 'input',
+        name: 'gmLatitude',
+        message: 'Google Maps latitude',
+        default: '0'
+      },
+      {
+        type: 'input',
+        name: 'gmLongitude',
+        message: 'Google Maps longitude',
+        default: '0'
+      },
+      {
+        type: 'input',
+        name: 'gmZoom',
+        message: 'Google Maps zoom',
+        default: '10'
+      }
+    ];
+    this.prompt(questions, function(answers) {
+      this.contact = {};
+      this.contact.email = answers.email;
+      this.contact.phone = answers.phone;
+      this.contact.address = answers.address;
+      this.contact.city = answers.city;
+      this.contact.pobox = answers.pobox;
+      this.contact.gmLatitude = answers.gmLatitude;
+      this.contact.gmLongitude = answers.gmLongitude;
+      this.contact.gmZoom = answers.gmZoom;
+      done();
+    }.bind(this));
+  },
+  moduleName: function() {
+    var moduleName = this.options['moduleName'] || 'contact';
     this.addToNav = true;
     this.moduleName = this._.underscored(moduleName);
     this.moduleNameTitle = this._.classify(moduleName);

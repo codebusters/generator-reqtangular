@@ -17,13 +17,13 @@ var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
         name: 'modules',
         choices: [
           {
-            name: 'Contact',
-            value: 'contactModule',
+            name: 'About Us',
+            value: 'aboutUsModule',
             checked: false
           },
           {
-            name: 'About Us',
-            value: 'aboutUsModule',
+            name: 'Contact',
+            value: 'contactModule',
             checked: false
           }
         ], validate: function(answer) {

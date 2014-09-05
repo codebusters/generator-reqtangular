@@ -4,7 +4,6 @@ define(['angular',
   'modules/lang/controller',
   'modules/main/controller',
   'modules/home/controller',
-  'modules/contact/controller'
 
 ]/*deps*/, function(angular)/*invoke*/ {
   'use strict';
@@ -23,7 +22,6 @@ define(['angular',
             'LangModule',
             'MainModule',
             'HomeModule',
-            'ContactModule',
             /*angJSDeps*/
             'ngCookies',
             'ngResource',
