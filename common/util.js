@@ -9,6 +9,7 @@ module.exports = {
   rewriteFile: rewriteFile,
   appName: appName,
   injectIntoFile: injectIntoFile,
+  injectIntoJSON: injectIntoJSON,
   injectIntoNav: injectIntoNav
 };
 
@@ -72,6 +73,21 @@ function injectIntoNav (mainHtmlFilePath, needle, navItemHtml) {
     needle: needle,
     splicable: [navItemHtml],
     spliceWithinLine: true
+  };
+
+  rewriteFile(config);
+
+}
+
+function injectIntoJSON (jsonFilePath, needle, newElement) {
+  // TODO: check if not exists
+  // Set up config object
+
+  var config = {
+    file: jsonFilePath,
+    needle: needle,
+    splicable: [newElement],
+    spliceWithinLine: false
   };
 
   rewriteFile(config);

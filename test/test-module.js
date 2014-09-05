@@ -157,6 +157,31 @@ describe('reqtangular:module generator', function () {
 
   });
 
+  var addedToNavRegex = '<li ng-class="{ active: menuCtrl\\.isSelected\\(\'test\'\\) }">\\s*<a ng-click="menuCtrl\\.selectMenu\\(\'test\'\\)" ng-href="#/test" translate="test"></a></li>\\s*<!-- navAnchor \\(do not delete!\\)-->';
+
+  it('adds placeholeder translations', function (done) {
+
+    helpers.mockPrompt(this.module, {
+      'moduleName': moduleName
+    });
+
+    this.module.run({}, function () {
+
+      helpers.assertFileContent('app/scripts/modules/lang/translations/en.json',
+        new RegExp('"module.test.title": "Test",\\s*"IMPORTANT_NEEDLE_DATA": "do not remove"')
+      );
+      helpers.assertFileContent('app/scripts/modules/lang/translations/es.json',
+        new RegExp('"module.test.title": "Test",\\s*"IMPORTANT_NEEDLE_DATA": "do not remove"')
+      );
+      helpers.assertFileContent('app/scripts/modules/lang/translations/de.json',
+        new RegExp('"module.test.title": "Test",\\s*"IMPORTANT_NEEDLE_DATA": "do not remove"')
+      );
+
+      done();
+    });
+
+  });
+
 
 
 });
