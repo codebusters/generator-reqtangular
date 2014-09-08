@@ -33,33 +33,37 @@
     <div class="box">
       <div class="col-lg-12">
         <hr>
-        <h2 class="intro-text text-center">Contact
+        <h2 class="intro-text text-center"><span translate="<%= moduleNameTitle %>"></span>
           <strong>form</strong>
         </h2>
         <hr>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, vitae, distinctio, possimus repudiandae cupiditate ipsum excepturi dicta neque eaque voluptates tempora veniam esse earum sapiente optio deleniti consequuntur eos voluptatem.</p>
-        <form role="form">
+        <form name="contactForm" ng-submit="submitForm(contactForm.$valid)" role="form" ng-controller="ContactController" novalidate>
           <div class="row">
-            <div class="form-group col-lg-4">
-              <label>Name</label>
-              <input type="text" class="form-control">
+            <div class="form-group col-lg-4" ng-class="{ 'has-error' : contactForm.name.$invalid && !contactForm.name.$pristine }">
+              <label>Nombre</label>
+              <input name="name" type="text" class="form-control" ng-model="formData.name" placeholder="Nombre" ng-minlength="3" required>
+              <p ng-show="contactForm.name.$error.minlength" class="help-block">El nombre es obligatorio</p>
             </div>
-            <div class="form-group col-lg-4">
-              <label>Email Address</label>
-              <input type="email" class="form-control">
+            <div class="form-group col-lg-4" ng-class="{ 'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine }">
+              <label>E-Mail</label>
+              <input type="email" name="email" class="form-control" ng-model="formData.email" placeholder="E-Mail" required>
+              <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">El E-Mail es obligatorio</p>
             </div>
-            <div class="form-group col-lg-4">
-              <label>Phone Number</label>
-              <input type="tel" class="form-control">
-            </div>
+            <!--            <div class="form-group col-lg-4" ng-class="{ 'has-error' : contactForm.phone.$invalid && !contactForm.phone.$pristine }">
+                          <label>Teléfono</label>
+                          <input name="phone" id="phone" type="tel" class="form-control" ng-model="formData.phone" placeholder="Teléfono" min-length="12 " required>
+                          <p ng-show="contactForm.phone.$error.minlength" class="help-block">Número de teléfono incorrecto</p>
+                        </div>-->
             <div class="clearfix"></div>
-            <div class="form-group col-lg-12">
-              <label>Message</label>
-              <textarea class="form-control" rows="6"></textarea>
+            <div class="form-group col-lg-12" ng-class="{ 'has-error' : contactForm.text.$invalid && !contactForm.text.$pristine }">
+              <label>Mensaje</label>
+              <textarea name="text" class="form-control" rows="6"  ng-model="formData.text" placeholder="Mensaje" ng-minlength="10" required></textarea>
+              <p ng-show="contactForm.text.$error.minlength" class="help-block">El mensaje es demasiado corto</p>
             </div>
             <div class="form-group col-lg-12">
               <input type="hidden" name="save" value="contact">
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" class="btn btn-default" ng-click="processForm()"  ng-disabled="contactForm.$invalid">Submit</button>
             </div>
           </div>
         </form>
