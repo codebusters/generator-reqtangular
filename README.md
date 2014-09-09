@@ -9,6 +9,7 @@ Scaffolding generator for new web projects. Preset integration with AngularJS an
 Based on generation framework Yeoman, reqtangular generates new integrated structures and preconfigured to start developing web based applications and RequireJSs AngularJS with Bootstrap and Less.
 
 
+
 ![](http://www.codebusters.es/assets/projects/reqtangular/reqtangular_small_brands.png)
 
 
@@ -67,4 +68,9 @@ codebusters
 business
 > ![](http://www.codebusters.es/assets/projects/reqtangular/business_thumb.png)
 
-> [codeBusters S.L.](http://www.codebusters.es)
+
+
+
+* * *
+[![](http://www.codebusters.es/assets/codebusters_logo.png)](http://www.codebusters.es)
+
