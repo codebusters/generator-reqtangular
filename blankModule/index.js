@@ -3,6 +3,7 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var angularUtils = require('../common/util.js');
 var path = require('path');
+var fs = require('fs');
 
 var BlankModuleGenerator = yeoman.generators.Base.extend({
   askModuleName: function() {
@@ -75,13 +76,29 @@ var BlankModuleGenerator = yeoman.generators.Base.extend({
       angularUtils.injectIntoNav(
               mainHtmlFilePath,
               "<!-- navAnchor (do not delete!)-->",
-              this.engine("<li ng-class=\"{ active: menuCtrl.isSelected('<%= moduleName %>') }\"><a ng-click=\"menuCtrl.selectMenu('<%= moduleName %>')\" ng-href=\"#/<%= moduleName %>\" translate=\"<%= moduleName %>\"></a></li>\n", this)
+              this.engine("<li ng-class=\"{ active: menuCtrl.isSelected('<%= moduleName %>') }\"><a ng-click=\"menuCtrl.selectMenu('<%= moduleName %>')\" ng-href=\"#/<%= moduleName %>\" translate=\"module.<%= moduleName %>.title\"></a></li>\n", this)
               );
       if (!this.options['avoid-info']) {
         this.log('All done, a link has been added to navigation bar, please add corresponding translations to files in app/scripts/modules/lang/translations/');
       }
     }
+  },
+  addTranslations : function () {
+
+    var translationsPath = 'app/scripts/modules/lang/translations';
+    var translations = fs.readdirSync(translationsPath);
+    var placeholderTranslation = this.engine("\"module.<%= moduleName %>.title\": \"<%= moduleNameTitle %>\",", this);
+
+    translations.forEach(function (file) {
+      var filePath = path.join(translationsPath, file);
+      angularUtils.injectIntoJSON(
+        filePath,
+        "\"IMPORTANT_NEEDLE_DATA\": \"do not remove\"",
+          placeholderTranslation
+      );
+    });
   }
+
 });
 
 
