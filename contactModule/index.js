@@ -94,6 +94,9 @@ var AboutUsModuleGenerator = yeoman.generators.Base.extend({
     this.copy('_module/_controller.js', path.join(this.modulePath, this.controllerFile + '.js'));
 
     this.copy('_module/_route.js', path.join(this.modulePath, this.routeFile + '.js'));
+
+    this.copy('_module/_templates/_contact.php',
+            path.join(this.modulePath, 'templates', 'contact.php'));
   },
   injectDependenciesToApp: function() {
     angularUtils.injectIntoFile(

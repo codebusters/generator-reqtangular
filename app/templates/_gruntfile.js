@@ -302,7 +302,7 @@ module.exports = function(grunt) {
             cwd: '<%= appConfig.app %>',
             dest: '<%= appConfig.dist %>',
             src: [
-              '*.{ico,png,txt}',
+              '*.{ico,png,txt,js}',
               '.htaccess',
               '*.html',
               'views/{,*/}*.html',

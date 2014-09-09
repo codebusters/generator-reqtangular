@@ -6,10 +6,12 @@ var yosay = require('yosay');
 var chalk = require('chalk');
 
 var context = {};
+
+
 var NgRequireGenerator = yeoman.generators.Base.extend({
   init: function() {
     this.pkg = require('../package.json');
-
+    this.less = false;
     this.on('end', function() {
       this.installDependencies({
         bower: true,
@@ -49,20 +51,20 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
       done();
     }.bind(this));
   },
-  askForLess: function() {
-    var done = this.async();
-
-    this.prompt([{
-        type: 'confirm',
-        name: 'less',
-        message: 'Would you like to use Less?',
-        default: false
-      }], function(props) {
-      this.less = props.less;
-
-      done();
-    }.bind(this));
-  },
+//  askForLess: function() {
+//    var done = this.async();
+//
+//    this.prompt([{
+//        type: 'confirm',
+//        name: 'less',
+//        message: 'Would you like to use Less?',
+//        default: false
+//      }], function(props) {
+//      this.less = props.less;
+//
+//      done();
+//    }.bind(this));
+//  },
   askForSEO: function() {
     var done = this.async();
     context = {
@@ -110,7 +112,7 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
           livereload: '<%= connect.options.livereload %>'
         }
       },
-      less: this.less,
+      less: this.less || false,
       appName: this.appName
     };
     this.copy('_package.json', 'package.json');
@@ -149,8 +151,6 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
     } else {
       this.copy('_app/_styles/codebusters.css', 'app/styles/main.css');
     }
-  },
-  projectFiles: function() {
   }
 });
 

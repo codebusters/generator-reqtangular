@@ -3,7 +3,7 @@ define(['angular',
   './configuration',
   'modules/lang/controller',
   'modules/main/controller',
-  'modules/home/controller',
+  'modules/home/controller'
 
 ]/*deps*/, function(angular)/*invoke*/ {
   'use strict';

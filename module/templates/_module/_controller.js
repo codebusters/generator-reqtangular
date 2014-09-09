@@ -1,10 +1,10 @@
 'use strict';
 define([
   'angular',
-  './<%= routeFile %>'
+  './<%=routeFile%>'
 ], function(angular) {
-  angular.module('<%= angularModuleName %>', ['<%= angularModuleName %>.routing'])
-          .controller('<%= moduleControllerClass %>', ['$scope', '$log',
+  angular.module('<%=angularModuleName%>', ['<%=angularModuleName%>.routing'])
+          .controller('<%=moduleControllerClass%>', ['$scope', '$log',
     function($scope, $log) {
       
     }]);

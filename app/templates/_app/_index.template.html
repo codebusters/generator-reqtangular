@@ -29,8 +29,11 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="brand">{{appInfo.name}}</div>
-    <main-directive></main-directive>
+    <div class="row">
+      <div class="col-md-2"><img class="img-responsive brand-logo" src="images/logo.png" alt="brand logo"></div>
+      <div class="col-md-8"><div class="brand">{{appInfo.name}}</div></div>
+    </div>
+  <main-directive></main-directive>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
   <script>
