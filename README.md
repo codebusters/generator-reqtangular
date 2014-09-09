@@ -35,6 +35,11 @@ Run `grunt dist` for building and `grunt serve` for preview
 Available generators:
 
 * [reqtangular:module](#module)
+* [reqtangular:blankModule](#blankModule)
+* [reqtangular:prebuiltModule](#prebuiltModule)
+* [reqtangular:aboutUsModule](#aboutUsModule)
+* [reqtangular:contactModule](#contactModule)
+* [reqtangular:theme](#theme)
 
 
 

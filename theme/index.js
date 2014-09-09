@@ -9,49 +9,55 @@ var that;
 var NgRequireModuleGenerator = yeoman.generators.Base.extend({
   askModuleName: function() {
     var done = this.async();
-    that = this;
-    if (!this.options['skip-welcome-message']) {
-      this.log(yosay('Welcome to the marvelous Reqtangular Theme Injector!'));
-    }
+    this.theme = 'codebusters';
+
     if (this.arguments[0]) {
       this.themePath = path.join('/templates/_themes/', this.arguments[0]);
       done();
-    }
-    var prompts = [
-      {
-        type: "list",
-        name: "theme",
-        message: "Choose theme",
-        choices: ["codeBusters", "Grayscale", "Business"],
-        filter: function(val) {
-          return val.toLowerCase();
-        },
-        default: 0
+    } else {
+      if (!this.options['skip-welcome-message']) {
+        this.log(yosay('Welcome to the marvelous Reqtangular Theme Injector!'));
       }
-    ];
-    this.prompt(prompts, function(props) {
-      this.themePath = path.join('/templates/_themes/', props.theme);
+      if (this.options['theme']) {
+        this.themePath = path.join('/templates/_themes/', this.options['theme']);
+      } else {
+        var prompts = [
+          {
+            type: "list",
+            name: "theme",
+            message: "Choose theme",
+            choices: ["codeBusters", "Business"],
+            filter: function(val) {
+              return val.toLowerCase();
+            },
+            default: 0
+          }
+        ];
+        this.prompt(prompts, function(props) {
+          this.themePath = path.join('/templates/_themes/', props.theme);
 //      var themeConfig = require('.' + this.themePath + '/config.json');
-      done();
-    }.bind(this));
+          done();
+        }.bind(this));
+      }
+    }
   },
   generateCssFIle: function() {
     console.log(chalk.bold.green('Processing theme styles files:'));
-    var themePath = this.themePath;
-    generateFile(this.themePath, '/styles/css/', '_main.css', function(data) {
-      that.copy(__dirname + themePath + '/_main.css', 'app/styles/main.css');
+    generateFile(this.themePath, '/styles/css/', '_main.css', function(result) {
+//      that.copy(__dirname + themePath + '/_main.css', 'app/styles/main.css');
     });
   },
   generateJsFIle: function() {
     console.log(chalk.bold.green('Processing theme js files:'));
-    var themePath = this.themePath;
     generateFile(this.themePath, '/js/', '_vendor.js', function(result) {
-      that.copy(__dirname + themePath + '/_vendor.js', 'app/vendor.js');
+//      that.copy(__dirname + themePath + '/_vendor.js', 'app/vendor.js');
     });
   },
   copyFiles: function() {
     this.directory(__dirname + this.themePath + '/images', 'app/images');
     this.directory(__dirname + this.themePath + '/fonts', 'app/fonts');
+    this.copy(__dirname + this.themePath + '/_main.css', 'app/styles/main.css');
+    this.copy(__dirname + this.themePath + '/_vendor.js', 'app/vendor.js');
   }
 });
 
