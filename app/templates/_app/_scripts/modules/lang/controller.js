@@ -17,8 +17,9 @@ define([
               .fallbackLanguage(['es', 'en', 'de']).useLocalStorage();
     }]);
 
-
   module.controller('LangController', function($scope, $translate, $rootScope) {
+    //TODO: set supported langs dynamically
+    $scope.showLangs = true;
     $scope.changeLang = function(key) {
       $translate.use(key);
     };

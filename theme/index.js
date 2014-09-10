@@ -30,7 +30,7 @@ var NgRequireModuleGenerator = yeoman.generators.Base.extend({
             filter: function(val) {
               return val.toLowerCase();
             },
-            default: 2
+            default: 0
           }
         ];
         this.prompt(prompts, function(props) {
