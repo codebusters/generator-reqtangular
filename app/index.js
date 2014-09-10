@@ -47,7 +47,12 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function(props) {
       this.appName = props.appName;
-
+      //Remove all special chars
+      this.appNamePackage = this.appName.replace(/[^\w\s]/gi, '');
+      //Remove white spaces
+      this.appNamePackage = this.appNamePackage.replace(/\s+/g, '');
+      this.reqtangularName = this.pkg.name;
+      this.reqtangularVersion = this.pkg.version;
       done();
     }.bind(this));
   },
@@ -67,18 +72,15 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
 //  },
   askForSEO: function() {
     var done = this.async();
-    context = {
-      'indexTitle': '',
-      'indexDescription': ''
-    };
+    context.indexTitle = '';
+    context.indexDescription = '';
     this.prompt([{
         type: 'confirm',
         name: 'seo',
         message: 'Would you like to configure basic SEO data?',
         default: true
       }], function(props) {
-      this.seo = props.seo;
-      if (this.seo) {
+      if (props.seo) {
         var questions = [
           {
             type: "input",
@@ -102,19 +104,18 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
     }.bind(this));
   },
   app: function() {
-    var context = {
-      appConfig: {
-        app: 'app',
-        dist: 'dist'
-      },
-      connect: {
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
-      },
-      less: this.less || false,
-      appName: this.appName
+    context.appConfig = {
+      app: 'app',
+      dist: 'dist'
     };
+    context.connect = {
+      options: {
+        livereload: '<%= connect.options.livereload %>'
+      }
+    };
+    context.less = this.less || false;
+    context.appName = this.appName;
+
     this.copy('_package.json', 'package.json');
     this.copy('_bower.json', 'bower.json');
     this.copy('_bowerrc', 'bowerrc');
