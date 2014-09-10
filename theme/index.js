@@ -26,11 +26,11 @@ var NgRequireModuleGenerator = yeoman.generators.Base.extend({
             type: "list",
             name: "theme",
             message: "Choose theme",
-            choices: ["codeBusters", "Business"],
+            choices: ["codeBusters", "Business","Darkness"],
             filter: function(val) {
               return val.toLowerCase();
             },
-            default: 0
+            default: 2
           }
         ];
         this.prompt(prompts, function(props) {
