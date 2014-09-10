@@ -59,7 +59,8 @@ yo reqtangular:theme
 yo reqtangular:theme codebusters
 ```
 
-Preconfigured themes:
+#### Preconfigured themes:
+
 
 codebusters
 > ![](http://www.codebusters.es/assets/projects/reqtangular/codebusters_thumb.png)
