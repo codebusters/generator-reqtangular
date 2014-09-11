@@ -34,8 +34,9 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
     if (!this.options['skip-welcome-message']) {
       this.log(yosay('Welcome to the marvelous Reqtangular generator!'));
       //codeBusters brand.
-      console.log('\t\t\t' + chalk.bold.white('code') + chalk.bold.red('Busters')
+      console.log(' ' + chalk.bold.yellow('reqtangular') + ' v' + this.pkg.version + '\t\t' + chalk.bold.white('code') + chalk.bold.red('Busters')
               + chalk.bold.white(' S.L.') + '\n\n');
+      console.log()
     }
 
     var prompts = [{

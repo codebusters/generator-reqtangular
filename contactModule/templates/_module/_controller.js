@@ -14,9 +14,9 @@ define([
           data: $scope.formData,
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data, status, headers, config) {
-          alert("success" + data)
+          //Here cusccess behaviour
         }).error(function(data, status, headers, config) {
-          alert("error" + data)
+          //Here error behaviour
         });
       };
     }]);
