@@ -10,10 +10,11 @@ module.exports = {
   appName: appName,
   injectIntoFile: injectIntoFile,
   injectIntoJSON: injectIntoJSON,
-  injectIntoNav: injectIntoNav
+  injectIntoNav: injectIntoNav,
+  registerModule: registerModule
 };
 
-function rewriteFile (args) {
+function rewriteFile(args) {
   args.path = args.path || process.cwd();
   var fullPath = path.join(args.path, args.file);
 
@@ -25,12 +26,12 @@ function rewriteFile (args) {
   fs.writeFileSync(fullPath, body);
 }
 
-function injectIntoFile (appPath, moduleName, injectedModuleName) {
+function injectIntoFile(appPath, moduleName, injectedModuleName) {
   // Set up config object
   var config = {
     file: path.join(
-      appPath,
-      'scripts/app.js'),
+            appPath,
+            'scripts/app.js'),
     needle: "",
     splicable: [],
     spliceWithinLine: true
@@ -38,16 +39,16 @@ function injectIntoFile (appPath, moduleName, injectedModuleName) {
 
   // Insert AMD module dependency
   config.needle = "]/*deps*/";
-  config.splicable = [ ", '" + moduleName + "'" ];
+  config.splicable = [", '" + moduleName + "'"];
 
   rewriteFile(config);
-/*
- * We apparently do not need this in our structure (lmiceli)
-  // Ensure our module is invoked
-  config.needle = ");//invoke"
-  config.splicable = [ ", " + attachedComponentName ];
-  rewriteFile(config);
-*/
+  /*
+   * We apparently do not need this in our structure (lmiceli)
+   // Ensure our module is invoked
+   config.needle = ");//invoke"
+   config.splicable = [ ", " + attachedComponentName ];
+   rewriteFile(config);
+   */
 
   // Check for the existence of a controllers module as an
   // application dependency. If it doesn't exist, inject it
@@ -57,14 +58,14 @@ function injectIntoFile (appPath, moduleName, injectedModuleName) {
   if (!regex_app_module.test(app_js)) {
     // Inject the controllers module as an AngularJS module dependency
     config.needle = "/*angJSDeps*/";
-    config.splicable = [ "'" + injectedModuleName + "',\n" ];
+    config.splicable = ["'" + injectedModuleName + "',\n"];
 
     rewriteFile(config);
   }
 }
 
 /*TODO, make this more generic in order to share more code with injectIntoFile*/
-function injectIntoNav (mainHtmlFilePath, needle, navItemHtml) {
+function injectIntoNav(mainHtmlFilePath, needle, navItemHtml) {
   // TODO: check if not exists
   // Set up config object
 
@@ -79,7 +80,7 @@ function injectIntoNav (mainHtmlFilePath, needle, navItemHtml) {
 
 }
 
-function injectIntoJSON (jsonFilePath, needle, newElement) {
+function injectIntoJSON(jsonFilePath, needle, newElement) {
   // TODO: check if not exists
   // Set up config object
 
@@ -94,13 +95,13 @@ function injectIntoJSON (jsonFilePath, needle, newElement) {
 
 }
 
-function escapeRegExp (str) {
+function escapeRegExp(str) {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 }
 
-function rewrite (args) {
+function rewrite(args) {
   // check if splicable is already in the body text
-  var re = new RegExp(args.splicable.map(function (line) {
+  var re = new RegExp(args.splicable.map(function(line) {
     return '\s*' + escapeRegExp(line);
   }).join('\n'));
 
@@ -111,7 +112,7 @@ function rewrite (args) {
   var lines = args.haystack.split('\n');
 
   var otherwiseLineIndex = 0;
-  lines.forEach(function (line, i) {
+  lines.forEach(function(line, i) {
     if (line.indexOf(args.needle) !== -1) {
       otherwiseLineIndex = i;
     }
@@ -136,14 +137,14 @@ function rewrite (args) {
     spaceStr += ' ';
   }
 
-  lines.splice(otherwiseLineIndex, 0, args.splicable.map(function (line) {
+  lines.splice(otherwiseLineIndex, 0, args.splicable.map(function(line) {
     return spaceStr + line;
   }).join('\n'));
 
   return lines.join('\n');
 }
 
-function appName (self) {
+function appName(self) {
   var counter = 0, suffix = self.options['app-suffix'];
   // Have to check this because of generator bug #386
   process.argv.forEach(function(val) {
@@ -155,4 +156,10 @@ function appName (self) {
     suffix = 'App';
   }
   return suffix ? self._.classify(suffix) : '';
+}
+
+function registerModule(appPath, module) {
+  var constants = JSON.parse(fs.readFileSync(path.join(appPath, 'config/constants.json'), 'utf8'));
+  constants.modules.push(module);
+  fs.writeFileSync(path.join(appPath, 'config/constants.json'), JSON.stringify(constants));
 }

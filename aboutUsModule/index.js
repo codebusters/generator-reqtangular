@@ -54,6 +54,13 @@ var AboutUsModuleGenerator = yeoman.generators.Base.extend({
         this.log('All done, a link has been added to navigation bar, please add corresponding translations to files in app/scripts/modules/lang/translations/');
       }
     }
+  },
+  registerModule: function() {
+    var module = {
+      'name': this.moduleName,
+      'navBar': this.addToNav
+    };
+    angularUtils.registerModule(this.appPath, module);
   }
 });
 

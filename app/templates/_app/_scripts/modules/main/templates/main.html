@@ -14,7 +14,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav" ng-controller="MainMenuController as menuCtrl">
+      <ul class="nav navbar-nav" ng-controller="MainMenuController as menuCtrl" ng-show="{{showMainMenu}}">
         <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
         <li ng-class="{ active: menuCtrl.isSelected('HOME') }">
           <a ng-click="menuCtrl.selectMenu('HOME')" ng-href="#" translate="HOME"></a>

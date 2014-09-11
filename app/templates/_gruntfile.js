@@ -75,7 +75,8 @@ module.exports = function(grunt) {
           '<%= appConfig.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
           '<%= appConfig.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
+        ],
+        tasks: ['preprocess:dev']
       }
     },
     // The actual grunt server settings

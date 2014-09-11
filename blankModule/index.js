@@ -83,20 +83,27 @@ var BlankModuleGenerator = yeoman.generators.Base.extend({
       }
     }
   },
-  addTranslations : function () {
+  addTranslations: function() {
 
     var translationsPath = 'app/scripts/modules/lang/translations';
     var translations = fs.readdirSync(translationsPath);
     var placeholderTranslation = this.engine("\"module.<%= moduleName %>.title\": \"<%= moduleNameTitle %>\",", this);
 
-    translations.forEach(function (file) {
+    translations.forEach(function(file) {
       var filePath = path.join(translationsPath, file);
       angularUtils.injectIntoJSON(
-        filePath,
-        "\"IMPORTANT_NEEDLE_DATA\": \"do not remove\"",
-          placeholderTranslation
-      );
+              filePath,
+              "\"IMPORTANT_NEEDLE_DATA\": \"do not remove\"",
+              placeholderTranslation
+              );
     });
+  },
+  registerModule: function() {
+    var module = {
+      'name': this.moduleName,
+      'navBar' : this.addToNav
+    };
+    angularUtils.registerModule(this.appPath, module);
   }
 
 });

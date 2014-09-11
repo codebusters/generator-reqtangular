@@ -21,7 +21,7 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
         callback: function() {
           console.log(chalk.bold.green('\nEverything is ready!, just run')
                   + chalk.bold.yellow(' grunt serve')
-                  + chalk.bold.green(' or build distribution version with')
+                  + chalk.bold.green(' \nor build distribution version with')
                   + chalk.bold.yellow(' grunt dist'));
         }
       });

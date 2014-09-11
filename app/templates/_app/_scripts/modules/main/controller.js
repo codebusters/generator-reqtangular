@@ -3,10 +3,12 @@ define([
   'angular',
   //Self module components
   './directive',
+  './utils',
 ], function(angular) {
   var module = angular.module('MainModule',
           [
             'Main.directive',
+            'Main.utils',
             'AppModule.configuration'
           ]);
 
@@ -15,15 +17,18 @@ define([
     '$log',
     'APP',
     'APP_INFO',
+    'mainModuleUtils',
     function(
             $scope,
             $log,
             APP,
-            APP_INFO
+            APP_INFO,
+            mainModuleUtils
             )
     {
       $scope.envMode = APP.ENV_MODE;
       $scope.appInfo = APP_INFO;
+      $scope.showMainMenu = mainModuleUtils.showMainMenu();
     }]);
 
   module.controller('MainMenuController', [

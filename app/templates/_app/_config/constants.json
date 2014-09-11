@@ -1,3 +1,9 @@
 {
-  "CONSTANT_1" : "Hi, I'm a constant value."
+  "CONSTANT_1": "Hi, I'm a constant value.",
+  "modules": [
+    {"name": "main"},
+    {"name": "lang"},
+    {"name": "home","navBar" : true}
+  ],
+  "langs": ["es", "en", "de"]
 }
