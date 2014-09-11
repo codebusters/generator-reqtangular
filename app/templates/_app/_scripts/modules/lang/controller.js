@@ -1,12 +1,14 @@
 'use strict';
 define([
   'angular',
-  './directive'
+  './directive',
+  './utils'
 ], function(angular) {
   var module = angular.module('LangModule',
           [
             'pascalprecht.translate',
-            'Lang.directive'
+            'Lang.directive',
+            'Lang.utils'
           ]);
   module.config(['$translateProvider', function($translateProvider) {
       $translateProvider.useStaticFilesLoader({
@@ -17,13 +19,15 @@ define([
               .fallbackLanguage(['es', 'en', 'de']).useLocalStorage();
     }]);
 
-  module.controller('LangController', function($scope, $translate, $rootScope) {
+  module.controller('LangController', [
+    '$scope','$translate','langModuleUtils'
+    ,function($scope, $translate, langModuleUtils) {
     //TODO: set supported langs dynamically
-    $scope.showLangs = true;
+    $scope.showLangs = langModuleUtils.showLangsBar();
     $scope.changeLang = function(key) {
       $translate.use(key);
     };
-  });
+  }]);
 
   /**
    * Get actual browser language.
