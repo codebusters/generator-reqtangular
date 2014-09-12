@@ -43,13 +43,16 @@ require.config({
       'angular'
     ],
     'angular-translate-loader-static-files': [
-      'angular','angular-translate-storage-local'
+      'angular',
+      'angular-translate-storage-local'
     ],
     'angular-translate-storage-local': [
-      'angular','angular-translate'
+      'angular',
+      'angular-translate'
     ],
     'angular-translate-storage-cookie': [
-      'angular','angular-translate-storage-local'
+      'angular',
+      'angular-translate-storage-local'
     ],
     'angular-mocks': {
       deps: [
@@ -59,7 +62,8 @@ require.config({
     }
   },
   priority: [
-    'angular','angular-translate-loader-static-files'
+    'angular',
+    'angular-translate-loader-static-files'
   ],
   packages: [
 
@@ -84,10 +88,7 @@ require([
   'angular-translate-storage-cookie'
 ], function(angular, app, ngRoutes, ngCookies, ngSanitize, ngResource, ngAnimate, ngTouch) {
   'use strict';
-  /* jshint ignore:start */
-  var $html = angular.element(document.getElementsByTagName('html')[0]);
-  /* jshint ignore:end */
   angular.element().ready(function() {
-    angular.resumeBootstrap([app.name]);
+    angular.bootstrap(document, [app['name']]);
   });
 });

@@ -36,7 +36,6 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
       //codeBusters brand.
       console.log(' ' + chalk.bold.yellow('reqtangular') + ' v' + this.pkg.version + '\t\t' + chalk.bold.white('code') + chalk.bold.red('Busters')
               + chalk.bold.white(' S.L.') + '\n\n');
-      console.log()
     }
 
     var prompts = [{
