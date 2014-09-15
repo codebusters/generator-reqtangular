@@ -41,6 +41,7 @@ Available generators:
 * [reqtangular:aboutUsModule](#aboutUsModule)
 * [reqtangular:contactModule](#contactModule)
 * [reqtangular:theme](#theme)
+* [reqtangular:lang](#lang)
 
 
 
@@ -58,6 +59,18 @@ yo reqtangular:theme
 
 yo reqtangular:theme codebusters
 ```
+
+### Lang
+Language module injector. Provides support for translations into several languages. Languages supported:
+* English (en). Default language.
+* Spanish (es).
+* German  (de).
+
+Examples:
+```bash
+yo reqtangular:lang
+```
+
 
 #### Preconfigured themes:
 
