@@ -66,7 +66,7 @@ Language module injector. Provides support for translations into several languag
 * Spanish (es).
 * German  (de).
 
-Examples:
+Example:
 ```bash
 yo reqtangular:lang
 ```
