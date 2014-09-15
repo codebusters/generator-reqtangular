@@ -5,5 +5,5 @@
     {"name": "lang"},
     {"name": "home","navBar" : true}
   ],
-  "langs": ["es", "en", "de"]
+  "langs": ["en"]
 }

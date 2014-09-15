@@ -1,5 +1,3 @@
 <div class="langContainer" ng-controller="LangController">
-  <div class="banner spain" ng-click="changeLang('es')"></div>
-  <div class="banner uk" ng-click="changeLang('en')"></div>
-  <div class="banner germany" ng-click="changeLang('de')"></div>
+  <div class="banner {{lang}}" ng-click="changeLang('{{lang}}')" ng-repeat="lang in langs"></div>
 </div>

@@ -11,7 +11,8 @@ module.exports = {
   injectIntoFile: injectIntoFile,
   injectIntoJSON: injectIntoJSON,
   injectIntoNav: injectIntoNav,
-  registerModule: registerModule
+  registerModule: registerModule,
+  registerLangs: registerLangs
 };
 
 function rewriteFile(args) {
@@ -161,5 +162,22 @@ function appName(self) {
 function registerModule(appPath, module) {
   var constants = JSON.parse(fs.readFileSync(path.join(appPath, 'config/constants.json'), 'utf8'));
   constants.modules.push(module);
+  fs.writeFileSync(path.join(appPath, 'config/constants.json'), JSON.stringify(constants));
+}
+
+function registerLangs(appPath, langs) {
+  var constants = JSON.parse(fs.readFileSync(path.join(appPath, 'config/constants.json'), 'utf8'));
+  langs.forEach(function(item) {
+    var duplicate = false;
+    constants.langs.forEach(function(lang) {
+      if (lang === item) {
+        duplicate = true;
+      }
+    });
+    if (!duplicate) {
+      constants.langs.push(item);
+    }
+  });
+
   fs.writeFileSync(path.join(appPath, 'config/constants.json'), JSON.stringify(constants));
 }

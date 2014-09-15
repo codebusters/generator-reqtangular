@@ -109,6 +109,6 @@ body {
   width:20px;
   background-image:url('../images/lang_banners.png');
 }
-.spain {background-position:-22px -2px; text-decoration: none}
-.uk {background-position:-22px -24px;}
-.germany {background-position:-210px -2px;}
+.es {background-position:-22px -2px; text-decoration: none}
+.en {background-position:-22px -24px;}
+.de {background-position:-210px -2px;}

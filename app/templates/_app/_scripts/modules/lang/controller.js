@@ -15,15 +15,14 @@ define([
         //TODO improve translation dir to relative path
         prefix: 'scripts/modules/lang/translations/',
         suffix: '.json'
-      }).preferredLanguage(getBrowserLang())
-              .fallbackLanguage(['es', 'en', 'de']).useLocalStorage();
+      }).preferredLanguage(getBrowserLang()).useLocalStorage();
     }]);
 
   module.controller('LangController', [
     '$scope','$translate','langModuleUtils'
     ,function($scope, $translate, langModuleUtils) {
-    //TODO: set supported langs dynamically
     $scope.showLangs = langModuleUtils.showLangsBar();
+    $scope.langs = langModuleUtils.getLangs();
     $scope.changeLang = function(key) {
       $translate.use(key);
     };

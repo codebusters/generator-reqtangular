@@ -13,6 +13,9 @@ define([
                     result = true;
                   }
                   return result;
+                },
+                getLangs : function() {
+                  return APP.langs;
                 }
               };
             }]);
