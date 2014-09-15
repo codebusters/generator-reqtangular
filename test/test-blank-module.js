@@ -170,12 +170,6 @@ describe('reqtangular:module generator', function () {
       helpers.assertFileContent('app/scripts/modules/lang/translations/en.json',
         new RegExp('"module.test.title": "Test",\\s*"IMPORTANT_NEEDLE_DATA": "do not remove"')
       );
-      helpers.assertFileContent('app/scripts/modules/lang/translations/es.json',
-        new RegExp('"module.test.title": "Test",\\s*"IMPORTANT_NEEDLE_DATA": "do not remove"')
-      );
-      helpers.assertFileContent('app/scripts/modules/lang/translations/de.json',
-        new RegExp('"module.test.title": "Test",\\s*"IMPORTANT_NEEDLE_DATA": "do not remove"')
-      );
 
       done();
     });
