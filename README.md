@@ -60,18 +60,6 @@ yo reqtangular:theme
 yo reqtangular:theme codebusters
 ```
 
-### Lang
-Language module injector. Provides support for translations into several languages. Languages supported:
-* English (en). Default language.
-* Spanish (es).
-* German  (de).
-
-Example:
-```bash
-yo reqtangular:lang
-```
-
-
 #### Preconfigured themes:
 
 
@@ -86,6 +74,17 @@ business
 darkness
 > ![](http://www.codebusters.es/assets/projects/reqtangular/darkness_thumb.png)
 
+
+### Lang
+Language module injector. Provides support for translations into several languages. Languages supported:
+* English (en). Default language.
+* Spanish (es).
+* German  (de).
+
+Example:
+```bash
+yo reqtangular:lang
+```
 
 
 * * *
