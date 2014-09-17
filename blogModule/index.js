@@ -63,7 +63,6 @@ var AboutUsModuleGenerator = yeoman.generators.Base.extend({
             );
   },
   addTranslations: function() {
-
     var appTranslationsPath = 'app/scripts/modules/lang/translations';
     var moduleTranslationsPath = path.join(path.dirname(this._sourceRoot), 'translations');
     var moduleTranslationsFiles = fs.readdirSync(moduleTranslationsPath);
