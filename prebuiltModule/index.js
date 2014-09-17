@@ -31,6 +31,11 @@ var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
             name: 'Portfolio',
             value: 'portfolioModule',
             checked: false
+          },
+          {
+            name: 'Blog',
+            value: 'blogModule',
+            checked: false
           }
         ], validate: function(answer) {
           if (answer.length < 1) {
@@ -56,7 +61,8 @@ var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
 
         var moduleInvocation = that.invoke('reqtangular:' + module, {
           options: {
-            'skip-welcome-message': true
+            'skip-welcome-message': true,
+            'avoid-info' : true
           }
         });
 

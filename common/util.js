@@ -178,6 +178,5 @@ function registerLangs(appPath, langs) {
       constants.langs.push(item);
     }
   });
-
   fs.writeFileSync(path.join(appPath, 'config/constants.json'), JSON.stringify(constants));
 }

@@ -1,0 +1,70 @@
+{
+  "categories":
+          [
+            {
+              "id": 0,
+              "name": "cat1"
+            },
+            {
+              "id": 2,
+              "name": "cat2"
+            }
+          ],
+  "entries":
+          [
+            {
+              "id": 0,
+              "published": true,
+              "lang": "en",
+              "categoryId": 1,
+              "title": "The first post",
+              "author": "codeBusters",
+              "dateTime": "August 28, 2014 at 10:00 PM",
+              "img": {"src": "scripts/modules/blog/img/post1.jpg", "alt": "post1"},
+              "summary": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.",
+              "mainText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
+              "comments":
+                      [
+                        {
+                          "text": "This article is amazing. Very interesting..."
+                        }
+                      ]
+            },
+            {
+              "id": 1,
+              "published": true,
+              "lang": "en",
+              "categoryId": 2,
+              "title": "Super second post",
+              "author": "codeBusters",
+              "dateTime": "September 17, 2014 at 10:00 PM",
+              "img": {"src": "scripts/modules/blog/img/post2.jpg", "alt": "post2"},
+              "summary": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.",
+              "mainText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
+              "comments":
+                      [
+                        {
+                          "text": "This article is amazing. Very interesting..."
+                        }
+                      ]
+            },
+            {
+              "id": 2,
+              "published": true,
+              "lang": "es",
+              "categoryId": 2,
+              "title": "Este es un post en español de prueba",
+              "author": "codeBusters",
+              "dateTime": "Septiembre 17, 2014 at 10:00 PM",
+              "img": {"src": "scripts/modules/blog/img/post2.jpg", "alt": "post2"},
+              "summary": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.",
+              "mainText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
+              "comments":
+                      [
+                        {
+                          "text": "This article is amazing. Very interesting..."
+                        }
+                      ]
+            }
+          ]
+}

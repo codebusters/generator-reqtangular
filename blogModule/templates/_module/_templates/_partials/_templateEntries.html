@@ -1,0 +1,15 @@
+<div class="box" ng-repeat="blogEntry in blogEntries">
+  <h2>
+    <a href="#/blog/{{blogEntry.id}}">{{blogEntry.title}}</a>
+  </h2>
+  <p class="lead">
+    <span translate="module.<%= moduleName %>.by"></span> <a href="#">{{blogEntry.author}}</a>
+  </p>
+  <p><span class="glyphicon glyphicon-time"></span> <span translate="module.<%= moduleName %>.postedOn"></span> {{blogEntry.dateTime}}</p>
+  <hr>
+  <img class="img-responsive" src="{{blogEntry.img.src}}" alt="{{blogEntry.img.src}}">
+  <hr>
+  <p>{{blogEntry.summary}}</p>
+  <a class="btn btn-primary" href="#/blog/{{blogEntry.id}}"><span translate="module.<%= moduleName %>.readMode"></span> <span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+<hr>

@@ -1,0 +1,8 @@
+{
+  "moduleName": "Blog",
+  "blogSearch": "Blog-Suche",
+  "blogCategories": "Blog Kategorien",
+   "by":"von",
+  "postedOn": "Gesendet am",
+  "readMode": "Weiterlesen"
+}
