@@ -40,6 +40,8 @@ Available generators:
 * [reqtangular:prebuiltModule](#prebuiltModule)
 * [reqtangular:aboutUsModule](#aboutUsModule)
 * [reqtangular:contactModule](#contactModule)
+* [reqtangular:portfolioModule](#portfolioModule)
+* [reqtangular:blogModule](#blogModule)
 * [reqtangular:theme](#theme)
 * [reqtangular:lang](#lang)
 
