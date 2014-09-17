@@ -1,4 +1,4 @@
-<div class="container" ng-controller="PortfolioController">
+<div class="container" ng-controller="<%= moduleControllerClass %>">
   <div class="row">
     <div class="box">
       <div class="col-lg-12">
@@ -14,7 +14,7 @@
     <div class="box">
       <div class="col-sm-<%= colValue %> portfolio-item" ng-repeat="entry in portFolioEntries">
         <a href="#">
-          <img src="{{entry.img}}" class="img-responsive" alt="{{entry.alt}}">
+          <img src="{{entry.img.src}}" class="img-responsive" alt="{{entry.img.alt}}">
         </a>
         <h3>
           <a href="#">{{entry.name}}</a>
