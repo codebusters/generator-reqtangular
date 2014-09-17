@@ -26,6 +26,11 @@ var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
             name: 'Contact',
             value: 'contactModule',
             checked: false
+          },
+          {
+            name: 'Portfolio',
+            value: 'portfolioModule',
+            checked: false
           }
         ], validate: function(answer) {
           if (answer.length < 1) {
