@@ -60,6 +60,24 @@
                           "text": "This article is amazing. Very interesting..."
                         }
                       ]
+            },
+            {
+              "id": 3,
+              "published": true,
+              "lang": "en",
+              "categoryId": 2,
+              "title": "Test post",
+              "author": {"id": 1, "name": "jfigueruela"},
+              "dateTime": "Septiembre 17, 2014 at 10:00 PM",
+              "img": {"src": "scripts/modules/blog/img/post2.jpg", "alt": "post2"},
+              "summary": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.",
+              "mainText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
+              "comments":
+                      [
+                        {
+                          "text": "This article is amazing. Very interesting..."
+                        }
+                      ]
             }
           ]
 }

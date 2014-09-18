@@ -13,10 +13,6 @@ define([
       template: template,
       controller: '<%=moduleControllerClass%>Detail'
     })
-            .when('/<%=moduleName%>/author/:authorId', {
-      template: template,
-      controller: '<%=moduleControllerClass%>'
-    })
             .otherwise({
       redirectTo: '/'
     });
