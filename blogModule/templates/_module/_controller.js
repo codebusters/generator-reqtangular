@@ -14,8 +14,8 @@ define([
            * @param {type} Pagination
            * @returns {undefined}
            */
-          .controller('<%= moduleControllerClass %>', ['$scope', '$http', '$log', '<%=moduleName%>Service', 'Pagination',
-    function($scope, $http, $log, service, Pagination) {
+          .controller('<%= moduleControllerClass %>', ['$scope', '$http', '$log', '$routeParams', '<%=moduleName%>Service', 'Pagination',
+    function($scope, $http, $log, $routeParams, service, Pagination) {
 
       $scope.template = {name: '<%=moduleName%>Entries.html', url: 'scripts/modules/blog/templates/partials/<%=moduleName%>Entries.tpl.html'};
 
@@ -23,12 +23,19 @@ define([
         $scope.blogCategories = categories;
       });
 
+      $scope.pagination = Pagination.getNew(1);
+      if ($routeParams.authorId) {
+        service.getEntriesByAuthorId($routeParams.authorId, function(entries) {
+          $scope.blogEntries = entries;
+          $scope.pagination.numPages = Math.ceil(entries.length / $scope.pagination.perPage);
+        });
+      } else {
+        service.getAllEntries(function(entries) {
+          $scope.blogEntries = entries;
+          $scope.pagination.numPages = Math.ceil(entries.length / $scope.pagination.perPage);
+        });
+      }
 
-      $scope.pagination = Pagination.getNew(2);
-      service.getAllEntries(function(entries) {
-        $scope.blogEntries = entries;
-        $scope.pagination.numPages = Math.ceil(entries.length / $scope.pagination.perPage);
-      });
     }])
           /**
            * Blog entry (detail) controller

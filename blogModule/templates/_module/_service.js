@@ -64,13 +64,30 @@ define([
                           success(function(data) {
                     var resultEntry = {};
                     data.entries.forEach(function(entry) {
-                      if (entry.id+'' === blogEntryId) {
+                      if (entry.id + '' === blogEntryId) {
                         resultEntry = entry;
                       }
                     });
                     cb(resultEntry);
                   });
-
+                },
+                /**
+                 * Get blog entries bu author
+                 * @param {type} authorId
+                 * @param {type} cb
+                 * @returns {undefined}
+                 */
+                getEntriesByAuthorId: function(authorId, cb) {
+                  $http.get(mockedDataFile).
+                          success(function(data) {
+                    var entries = [];
+                    data.entries.forEach(function(entry) {
+                      if (entry.author.id + '' === authorId) {
+                        entries.push(entry);
+                      }
+                    });
+                    cb(entries);
+                  });
                 }
               };
             }]);

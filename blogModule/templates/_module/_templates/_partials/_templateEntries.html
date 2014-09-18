@@ -1,16 +1,16 @@
 <div class="box" ng-repeat="blogEntry in blogEntries | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
   <h2>
-    <a href="#/blog/{{blogEntry.id}}">{{blogEntry.title}}</a>
+    <a href="#/<%=moduleName%>/{{blogEntry.id}}">{{blogEntry.title}}</a>
   </h2>
   <p class="lead">
-    <span translate="module.<%= moduleName %>.by"></span> <a href="#">{{blogEntry.author}}</a>
+    <span translate="module.<%= moduleName %>.by"></span> <a href="#/<%=moduleName%>/author/{{blogEntry.author.id}}">{{blogEntry.author.name}}</a>
   </p>
   <p><span class="glyphicon glyphicon-time"></span> <span translate="module.<%= moduleName %>.postedOn"></span> {{blogEntry.dateTime}}</p>
   <hr>
   <img class="img-responsive" src="{{blogEntry.img.src}}" alt="{{blogEntry.img.src}}">
   <hr>
   <p>{{blogEntry.summary}}</p>
-  <a class="btn btn-primary" href="#/blog/{{blogEntry.id}}"><span translate="module.<%= moduleName %>.readMode"></span> <span class="glyphicon glyphicon-chevron-right"></span></a>
+  <a class="btn btn-primary" href="#/<%=moduleName%>/{{blogEntry.id}}"><span translate="module.<%= moduleName %>.readMode"></span> <span class="glyphicon glyphicon-chevron-right"></span></a>
   <hr>
 </div>
 
