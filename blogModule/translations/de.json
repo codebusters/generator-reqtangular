@@ -2,7 +2,9 @@
   "moduleName": "Blog",
   "blogSearch": "Blog-Suche",
   "blogCategories": "Blog Kategorien",
-   "by":"von",
+  "by": "von",
   "postedOn": "Gesendet am",
-  "readMode": "Weiterlesen"
+  "readMode": "Weiterlesen",
+  "older": "älter",
+  "newer": "neuere"
 }

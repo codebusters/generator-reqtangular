@@ -4,25 +4,30 @@ define([
   './<%= routeFile %>',
   './<%= serviceFile %>'
 ], function(angular) {
-  angular.module('<%= angularModuleName %>', ['<%= angularModuleName %>.routing', '<%= angularModuleName %>.service'])
+  angular.module('<%= angularModuleName %>', ['<%= angularModuleName %>.routing', '<%= angularModuleName %>.service', 'simplePagination'])
           /**
-           * Blog entries controller
+           * Blog entries controller.
            * @param {type} $scope
            * @param {type} $http
            * @param {type} $log
            * @param {type} service
+           * @param {type} Pagination
            * @returns {undefined}
            */
-          .controller('<%= moduleControllerClass %>', ['$scope', '$http', '$log', '<%=moduleName%>Service',
-    function($scope, $http, $log, service) {
+          .controller('<%= moduleControllerClass %>', ['$scope', '$http', '$log', '<%=moduleName%>Service', 'Pagination',
+    function($scope, $http, $log, service, Pagination) {
 
       $scope.template = {name: '<%=moduleName%>Entries.html', url: 'scripts/modules/blog/templates/partials/<%=moduleName%>Entries.tpl.html'};
 
       service.getAllCategories(function(categories) {
         $scope.blogCategories = categories;
       });
-      service.getEntriesByLang(getBrowserLang(), function(entries) {
+
+
+      $scope.pagination = Pagination.getNew(2);
+      service.getAllEntries(function(entries) {
         $scope.blogEntries = entries;
+        $scope.pagination.numPages = Math.ceil(entries.length / $scope.pagination.perPage);
       });
     }])
           /**

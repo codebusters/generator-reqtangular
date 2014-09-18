@@ -16,6 +16,7 @@
     "requirejs-text": "~2.0.12",
     "angular-translate": "~2.2.0",
     "angular-translate-storage-local": "~2.2.0",
+    "ng-simplePagination" : "1.0.2",
     "angular-translate-loader-static-files": "~2.2.0"<% if (less) { %>,
     "less": "~1.7.4"<% } %>
   },

@@ -1,4 +1,4 @@
-<div class="box" ng-repeat="blogEntry in blogEntries">
+<div class="box" ng-repeat="blogEntry in blogEntries | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
   <h2>
     <a href="#/blog/{{blogEntry.id}}">{{blogEntry.title}}</a>
   </h2>
@@ -11,5 +11,11 @@
   <hr>
   <p>{{blogEntry.summary}}</p>
   <a class="btn btn-primary" href="#/blog/{{blogEntry.id}}"><span translate="module.<%= moduleName %>.readMode"></span> <span class="glyphicon glyphicon-chevron-right"></span></a>
+  <hr>
 </div>
-<hr>
+
+<ul class="pager">
+  <li class="previous"><a ng-click="pagination.prevPage()" ng-hide="pagination.page == 0">&larr; <span translate="module.<%= moduleName %>.newer"></span></a></li>
+  <li class="next"><a ng-click="pagination.nextPage()" ng-hide="pagination.page + 1 >= pagination.numPages"><span translate="module.<%= moduleName %>.older"></span> &rarr;</a></li>
+</ul>
+

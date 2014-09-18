@@ -15,7 +15,8 @@ require.config({
     'angular-translate-storage-local': '../../bower_components/angular-translate-storage-local/angular-translate-storage-local',
     'angular-translate-storage-cookie': '../../bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.min',
     bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap',
-    text: '../../bower_components/requirejs-text/text'
+    text: '../../bower_components/requirejs-text/text',
+    simplePagination: '../../bower_components/ng-simplePagination/simplePagination'
   },
   shim: {
     angular: {
@@ -54,6 +55,9 @@ require.config({
       'angular',
       'angular-translate-storage-local'
     ],
+    simplePagination: [
+      'angular',
+    ],
     'angular-mocks': {
       deps: [
         'angular'
@@ -66,7 +70,6 @@ require.config({
     'angular-translate-loader-static-files'
   ],
   packages: [
-
   ]
 });
 
@@ -82,6 +85,7 @@ require([
   'angular-resource',
   'angular-animate',
   'angular-touch',
+  'simplePagination',
   'angular-translate',
   'angular-translate-loader-static-files',
   'angular-translate-storage-local',

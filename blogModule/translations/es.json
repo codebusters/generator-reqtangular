@@ -4,5 +4,7 @@
   "blogCategories": "Categorías Blog",
   "by":"por",
   "postedOn": "Publicado en",
-  "readMode": "Leer mas"
+  "readMode": "Leer mas",
+  "older" : "Antiguos",
+  "newer" : "Nuevos"
 }
