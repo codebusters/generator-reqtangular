@@ -28,6 +28,7 @@ var AboutUsModuleGenerator = yeoman.generators.Base.extend({
     this.controllerFile = moduleName + '_ctrl';
     this.routeFile = moduleName + '_route';
     this.serviceFile = moduleName + '_service';
+    this.directiveFile = moduleName + '_directive';
   },
   module: function() {
     this.mkdir(this.modulePath);
@@ -49,11 +50,15 @@ var AboutUsModuleGenerator = yeoman.generators.Base.extend({
 
     this.copy('_module/_service.js', path.join(this.modulePath, this.serviceFile + '.js'));
 
+    this.copy('_module/_directive.js', path.join(this.modulePath, this.directiveFile + '.js'));
+    this.copy('_module/_templates/_templateCategories.html',
+            path.join(this.modulePath, 'templates', this.moduleName + 'Categories.tpl.html'));
+
     this.directory('_module/_img', path.join(this.modulePath, 'img'));
 
     this.copy('_module/_mockedData.json', path.join(this.modulePath, 'mockedData.json'));
 
-    this.copy('_module/_mockedData.json', path.join(this.modulePath, 'mockedData.json'));
+
   },
   injectDependenciesToApp: function() {
     angularUtils.injectIntoFile(

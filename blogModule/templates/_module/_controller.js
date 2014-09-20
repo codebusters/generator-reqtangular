@@ -2,9 +2,15 @@
 define([
   'angular',
   './<%= routeFile %>',
-  './<%= serviceFile %>'
+  './<%= serviceFile %>',
+  './<%= directiveFile %>'
 ], function(angular) {
-  angular.module('<%= angularModuleName %>', ['<%= angularModuleName %>.routing', '<%= angularModuleName %>.service', 'simplePagination'])
+  angular.module('<%= angularModuleName %>', [
+    '<%= angularModuleName %>.routing',
+    '<%= angularModuleName %>.service',
+    '<%= angularModuleName %>.directive',
+    'simplePagination'
+  ])
           /**
            * Blog entries controller.
            * @param {type} $scope
@@ -16,12 +22,14 @@ define([
            */
           .controller('<%= moduleControllerClass %>',
           [
+            '$rootScope',
             '$scope',
             '$log',
             '$translate',
             '<%=moduleName%>Service',
             'Pagination',
             function(
+                    $rootScope,
                     $scope,
                     $log,
                     $translate,
@@ -31,10 +39,12 @@ define([
               //Init pagination
               $scope.pagination = Pagination.getNew(3);
               //Template asignation
-              $scope.template = {name: '<%=moduleName%>Entries.html', url: 'scripts/modules/blog/templates/partials/<%=moduleName%>Entries.tpl.html'};
-              service.getAllCategories(function(categories) {
-                $scope.blogCategories = categories;
-              });
+              $scope.template =
+                      {
+                        name: '<%=moduleName%>Entries.html',
+                        url: 'scripts/modules/blog/templates/partials/<%=moduleName%>Entries.tpl.html'
+                      };
+
               service.getAllEntries(function(entries) {
                 $scope.blogEntries = entries;
                 $scope.pagination.numPages = Math.ceil(entries.length / $scope.pagination.perPage);
@@ -47,6 +57,13 @@ define([
               $scope.filterBlogEntries = function(entry) {
                 //Global filtering options (published and language)
                 if (entry.published && $translate.use() === entry.lang) {
+                  if ($rootScope.categoryId) {
+                    if (entry.categoryId === $rootScope.categoryId) {
+                      return entry;
+                    }
+                  } else {
+                    return entry;
+                  }
                   return entry;
                 }
               };
@@ -74,7 +91,11 @@ define([
                     $routeParams,
                     service) {
 
-              $scope.template = {name: '<%=moduleName%>Entry.html', url: 'scripts/modules/blog/templates/partials/<%=moduleName%>Entry.tpl.html'};
+              $scope.template =
+                      {
+                        name: '<%=moduleName%>Entry.html',
+                        url: 'scripts/modules/blog/templates/partials/<%=moduleName%>Entry.tpl.html'
+                      };
 
               service.getEntryById($routeParams.blogEntryId, function(entry) {
                 $scope.blogEntry = entry;
