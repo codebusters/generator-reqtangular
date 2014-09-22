@@ -88,6 +88,26 @@ define([
                     });
                     cb(entries);
                   });
+                },
+                /**
+                 * Get last entries by number and language.
+                 * @param {type} lang
+                 * @param {type} entriesNumber
+                 * @param {type} cb
+                 * @returns {undefined}
+                 */
+                getLastEntries: function(lang, entriesNumber, cb) {
+                  $http.get(mockedDataFile).
+                          success(function(data) {
+                    var entries = [];
+                    data.entries.forEach(function(entry) {
+                      if (entry.lang === lang) {
+                        entries.push(entry);
+                      }
+                    });
+                    cb(entries.slice(
+                            Math.max(data.entries.length - entriesNumber, 1)));
+                  });
                 }
               };
             }]);

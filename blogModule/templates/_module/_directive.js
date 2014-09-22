@@ -1,11 +1,13 @@
 'use strict';
 define([
   'angular',
-  'text!./templates/<%=moduleName%>Categories.tpl.html'
-], function(angular, template) {
-  angular.module('<%=angularModuleName%>.directive', [
-    '<%= angularModuleName %>.service'
-  ]).directive('<%=moduleName%>Categories',
+  'text!./templates/<%=moduleName%>Categories.tpl.html',
+  'text!./templates/<%=moduleName%>LastEntries.tpl.html'
+], function(angular, templateCategories, templateLastEntries) {
+  angular.module('<%=angularModuleName%>.directive',
+          [
+            '<%= angularModuleName %>.service'
+          ]).directive('<%=moduleName%>Categories',
           [
             '$rootScope',
             '<%=moduleName%>Service',
@@ -15,7 +17,7 @@ define([
                     ) {
               return {
                 restrict: 'E',
-                template: template,
+                template: templateCategories,
                 controller: function() {
                   $rootScope.categoryId = null;
                   service.getAllCategories(function(categories) {
@@ -27,5 +29,31 @@ define([
                 },
                 controllerAs: 'panelCategories'
               };
-            }]);
+            }
+          ]
+          ).directive('<%=moduleName%>LastEntries',
+          [
+            '$rootScope',
+            '$translate',
+            '<%=moduleName%>Service',
+            function(
+                    $rootScope,
+                    $translate,
+                    service
+                    ) {
+              return {
+                restrict: 'E',
+                template: templateLastEntries,
+                controller: function() {
+                  //Hard coded last 3 entries.
+                  $translate.use()
+                  service.getLastEntries($translate.use(), 3, function(entries) {
+                    $rootScope.lastEntries = entries;
+                  });
+                },
+                controllerAs: 'panelLastEntries'
+              };
+            }
+          ]
+          );
 });

@@ -50,12 +50,15 @@ var AboutUsModuleGenerator = yeoman.generators.Base.extend({
 
     this.copy('_module/_service.js', path.join(this.modulePath, this.serviceFile + '.js'));
 
+    //Directives
     this.copy('_module/_directive.js', path.join(this.modulePath, this.directiveFile + '.js'));
     this.copy('_module/_templates/_templateCategories.html',
             path.join(this.modulePath, 'templates', this.moduleName + 'Categories.tpl.html'));
-
+    this.copy('_module/_templates/_templateLastEntries.html',
+            path.join(this.modulePath, 'templates', this.moduleName + 'LastEntries.tpl.html'));
     this.directory('_module/_img', path.join(this.modulePath, 'img'));
 
+    //MockedData
     this.copy('_module/_mockedData.json', path.join(this.modulePath, 'mockedData.json'));
 
 

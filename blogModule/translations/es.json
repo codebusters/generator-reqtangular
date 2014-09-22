@@ -2,9 +2,10 @@
   "moduleName": "Blog",
   "blogSearch": "Búsquedas Blog",
   "blogCategories": "Categorías Blog",
-  "by":"por",
+  "by": "por",
   "postedOn": "Publicado en",
   "readMode": "Leer mas",
-  "older" : "Antiguos",
-  "newer" : "Nuevos"
+  "older": "Antiguos",
+  "newer": "Nuevos",
+  "blogLastEntries": "Últimas entradas"
 }
