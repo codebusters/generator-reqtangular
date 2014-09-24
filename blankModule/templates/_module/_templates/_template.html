@@ -10,6 +10,9 @@
         <img class="img-responsive img-border img-left" src="images/intro-pic.jpg" alt="">
         <hr class="visible-xs">
         <p>Hello! This is the view for your new <%= moduleNameTitle %> module.</p>
+        <% if (directives) { %>
+          <<%= moduleName %>-directive-example></<%= moduleName %>-directive-example>
+        <% } %>
       </div>
     </div>
   </div>

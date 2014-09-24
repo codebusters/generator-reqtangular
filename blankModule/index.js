@@ -37,6 +37,32 @@ var BlankModuleGenerator = yeoman.generators.Base.extend({
       done();
     }.bind(this));
   },
+  askForExtendedFunctionality: function() {
+    var done = this.async();
+    this.prompt([
+      {
+        type: 'checkbox',
+        message: 'Select extended functionality to add',
+        name: 'moduleFunctions',
+        choices: [
+          {
+            name: 'Directives',
+            value: 'directives',
+            checked: false
+          },
+          {
+            name: 'Services',
+            value: 'services',
+            checked: false
+          }
+        ]
+      }
+    ], function(answers) {
+      this.directives = answers.moduleFunctions.indexOf('directives') !== -1 ? true : false;
+      this.services = answers.moduleFunctions.indexOf('services') !== -1 ? true : false;
+      done();
+    }.bind(this));
+  },
   askForNavLink: function() {
     var done = this.async();
     this.prompt([{
@@ -57,10 +83,21 @@ var BlankModuleGenerator = yeoman.generators.Base.extend({
     this.copy('_module/_templates/_template.html',
             path.join(this.modulePath, 'templates', this.moduleName + '.tpl.html'));
 
-    this.copy('_module/_controller.js', path.join(this.modulePath, this.controllerFile + '.js'));
-
     this.copy('_module/_route.js', path.join(this.modulePath, this.routeFile + '.js'));
 
+    //Extended module functionalities.
+    if (this.directives) {
+      this.directiveFile = this.moduleName + '_directive';
+      this.template('_module/_directive.js', path.join(this.modulePath, this.directiveFile + '.js'), this);
+      this.copy('_module/_templates/_templateDirective.html',
+              path.join(this.modulePath, 'templates', this.moduleName + 'Directive.tpl.html'));
+    }
+    if (this.services) {
+      this.serviceFile = this.moduleName + '_service';
+      this.copy('_module/_service.js', path.join(this.modulePath, this.serviceFile + '.js'));
+    }
+
+    this.template('_module/_controller.js', path.join(this.modulePath, this.controllerFile + '.js'), this);
     // TODO add module tests files
   },
   injectDependenciesToApp: function() {
@@ -101,7 +138,7 @@ var BlankModuleGenerator = yeoman.generators.Base.extend({
   registerModule: function() {
     var module = {
       'name': this.moduleName,
-      'navBar' : this.addToNav
+      'navBar': this.addToNav
     };
     angularUtils.registerModule(this.appPath, module);
   }

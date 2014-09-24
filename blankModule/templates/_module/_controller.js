@@ -1,12 +1,41 @@
 'use strict';
-define([
-  'angular',
-  './<%= routeFile %>'
+        define([
+        'angular',
+        './<%= routeFile %>'
+        <% if (directives) { %>
+        ,'./<%= directiveFile %>'
+        <% } %>
+        <% if (services) { %> 
+        ,'./<%= serviceFile %>'
+        <% } %>
 ], function(angular) {
-  angular.module('<%= angularModuleName %>', ['<%= angularModuleName %>.routing'])
-          .controller('<%= moduleControllerClass %>', ['$scope', '$log',
-    function($scope, $log) {
-      
-    }]);
-
+angular.module(
+        '<%= angularModuleName %>',
+        ['AppModule.configuration', '<%= angularModuleName %>.routing'
+        <% if (directives) { %>
+          ,'<%= angularModuleName%>.directive'
+        <% } %>
+        <% if (services) { %> 
+          ,'<%= angularModuleName%>.service'
+        <% } %>
+        ]
+        )
+        .controller('<%= moduleControllerClass %>',
+        [
+                'APP',
+                '$scope',
+                '$log',
+                <% if (services) { %>
+                  '<%=moduleName%>Service',
+                <% } %>
+                function(
+                        APP,
+                        $scope,
+                        $log
+                       <% if (services) { %>
+                       ,service
+                       <% } %>
+                      ) {
+                  //Here your code
+                }]);
 });
