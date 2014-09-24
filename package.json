@@ -1,6 +1,6 @@
 {
   "name": "generator-reqtangular",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "yeoman-angular-require-bootstrap-less-generator",
   "license": "Apache License",
   "main": "app/index.js",
