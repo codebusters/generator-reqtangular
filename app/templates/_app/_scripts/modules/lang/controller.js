@@ -21,9 +21,11 @@ define([
   module.controller('LangController', [
     '$scope','$translate','langModuleUtils'
     ,function($scope, $translate, langModuleUtils) {
+    $scope.selectedLang = $translate.use() || getBrowserLang();
     $scope.showLangs = langModuleUtils.showLangsBar();
     $scope.langs = langModuleUtils.getLangs();
     $scope.changeLang = function(key) {
+      $scope.selectedLang = key;
       $translate.use(key);
     };
   }]);
