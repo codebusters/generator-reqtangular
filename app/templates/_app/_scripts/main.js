@@ -14,7 +14,8 @@ require.config({
     'angular-translate-loader-static-files': '../../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files',
     'angular-translate-storage-local': '../../bower_components/angular-translate-storage-local/angular-translate-storage-local',
     'angular-translate-storage-cookie': '../../bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.min',
-    bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap',
+    bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap.min',
+    jquery: '../../bower_components/jquery/dist/jquery.min',
     text: '../../bower_components/requirejs-text/text',
     simplePagination: '../../bower_components/ng-simplePagination/simplePagination'
   },
@@ -56,7 +57,10 @@ require.config({
       'angular-translate-storage-local'
     ],
     simplePagination: [
-      'angular',
+      'angular'
+    ],
+    bootstrap : [
+      'jquery'
     ],
     'angular-mocks': {
       deps: [
@@ -89,7 +93,8 @@ require([
   'angular-translate',
   'angular-translate-loader-static-files',
   'angular-translate-storage-local',
-  'angular-translate-storage-cookie'
+  'angular-translate-storage-cookie',
+  'bootstrap'
 ], function(angular, app, ngRoutes, ngCookies, ngSanitize, ngResource, ngAnimate, ngTouch) {
   'use strict';
   angular.element().ready(function() {
