@@ -1,5 +1,5 @@
 {
-  "CONSTANT_1": "Hi, I'm a constant value.",
+  "DEFAULT_LANG": "en",
   "modules": [
     {"name": "main"},
     {"name": "lang"},

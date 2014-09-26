@@ -8,27 +8,31 @@ define([
           [
             'pascalprecht.translate',
             'Lang.directive',
-            'Lang.utils'
+            'Lang.utils',
+            'AppModule.configuration'
           ]);
   module.config(['$translateProvider', function($translateProvider) {
       $translateProvider.useStaticFilesLoader({
         //TODO improve translation dir to relative path
         prefix: 'scripts/modules/lang/translations/',
         suffix: '.json'
-      }).preferredLanguage(getBrowserLang()).useLocalStorage();
+      });
     }]);
 
   module.controller('LangController', [
-    '$scope','$translate','langModuleUtils'
-    ,function($scope, $translate, langModuleUtils) {
-    $scope.selectedLang = $translate.use() || getBrowserLang();
-    $scope.showLangs = langModuleUtils.showLangsBar();
-    $scope.langs = langModuleUtils.getLangs();
-    $scope.changeLang = function(key) {
-      $scope.selectedLang = key;
-      $translate.use(key);
-    };
-  }]);
+    '$scope', '$translate', 'langModuleUtils', 'APP'
+            , function($scope, $translate, langModuleUtils, APP) {
+      if (!$translate.use()) {
+        $scope.selectedLang = APP.DEFAULT_LANG;
+        $translate.use(APP.DEFAULT_LANG);
+      }
+      $scope.showLangs = langModuleUtils.showLangsBar();
+      $scope.langs = langModuleUtils.getLangs();
+      $scope.changeLang = function(key) {
+        $scope.selectedLang = key;
+        $translate.use(key);
+      };
+    }]);
 
   /**
    * Get actual browser language.

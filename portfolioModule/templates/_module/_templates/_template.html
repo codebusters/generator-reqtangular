@@ -12,7 +12,8 @@
   </div>
   <div class="row">
     <div class="box">
-      <div class="col-sm-<%= colValue %> portfolio-item" ng-repeat="entry in portFolioEntries">
+      <div class="col-sm-<%= colValue %> portfolio-item" ng-repeat="entry in portFolioEntries
+           | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage | filter:filterPortfolioEntries">
         <a href="#">
           <img src="{{entry.img.src}}" class="img-responsive" alt="{{entry.img.alt}}">
         </a>
@@ -23,4 +24,8 @@
       </div>
     </div>
   </div>
+  <ul class="pager">
+    <li class="previous"><a ng-click="pagination.prevPage()" ng-hide="pagination.page == 0">&larr; <span translate="module.<%= moduleName %>.newer"></span></a></li>
+    <li class="next"><a ng-click="pagination.nextPage()" ng-hide="pagination.page + 1 >= pagination.numPages"><span translate="module.<%= moduleName %>.older"></span> &rarr;</a></li>
+  </ul>
 </div>

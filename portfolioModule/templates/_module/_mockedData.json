@@ -2,33 +2,39 @@
   "entries":
           [
             {
+              "lang": "en",
               "img": {"src": "scripts/modules/portfolio/img/cabin.png", "alt": "cabin"},
               "name": "Project cabin",
               "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae."
             },
             {
+              "lang": "en",
               "img": {"src": "scripts/modules/portfolio/img/cake.png", "alt": "cake"},
               "name": "Project cake",
               "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae."
             },
             {
+              "lang": "en",
               "img": {"src": "scripts/modules/portfolio/img/circus.png", "alt": "circus"},
               "name": "Project circus",
               "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae."
             },
             {
+              "lang": "es",
               "img": {"src": "scripts/modules/portfolio/img/game.png", "alt": "game"},
-              "name": "Project game",
+              "name": "Proyecto juego",
               "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae."
             },
             {
+              "lang": "es",
               "img": {"src": "scripts/modules/portfolio/img/safe.png", "alt": "safe"},
-              "name": "Project safe",
+              "name": "Proyecto a salvo",
               "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae."
             },
             {
+              "lang": "de",
               "img": {"src": "scripts/modules/portfolio/img/submarine.png", "alt": "submarine"},
-              "name": "Project submarine",
+              "name": "U-Boot-Projekt",
               "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae."
             }
           ]

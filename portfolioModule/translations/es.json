@@ -1,3 +1,5 @@
 {
-  "moduleName": "Portafolio"
+  "moduleName": "Portafolio",
+  "older": "Anteriores",
+  "newer": "Nuevos"
 }
