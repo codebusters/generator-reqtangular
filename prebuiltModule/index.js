@@ -7,10 +7,12 @@ var path = require('path');
 
 var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
   askModules: function() {
+    this.appPath = 'app';
     var done = this.async();
     if (!this.options['skip-welcome-message']) {
       this.log(yosay('Welcome to the marvelous Reqtangular prebuilt modules generator!'));
     }
+    console.log(angularUtils.getModule(this.appPath, 'blog'))
     this.prompt([
       {
         type: 'checkbox',
@@ -20,22 +22,27 @@ var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
           {
             name: 'About Us',
             value: 'aboutUsModule',
-            checked: false
+            checked: angularUtils.getModule(this.appPath, 'about') ? true :false
           },
           {
             name: 'Contact',
             value: 'contactModule',
-            checked: false
+            checked: angularUtils.getModule(this.appPath, 'contact') ? true :false
           },
           {
             name: 'Portfolio',
             value: 'portfolioModule',
-            checked: false
+            checked: angularUtils.getModule(this.appPath, 'portfolio') ? true :false
           },
           {
             name: 'Blog',
             value: 'blogModule',
-            checked: false
+            checked: angularUtils.getModule(this.appPath, 'blog') ? true :false
+          },
+          {
+            name: 'Auth',
+            value: 'authModule',
+            checked: angularUtils.getModule(this.appPath, 'auth') ? true :false
           }
         ], validate: function(answer) {
           if (answer.length < 1) {
@@ -45,33 +52,33 @@ var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
         }
       }], function(answer) {
       var that = this;
-      
-      var getNextModule = function () {
+
+      var getNextModule = function() {
         return answer.modules.shift();
       };
 
-      var invokeRemainingModules = function () {
+      var invokeRemainingModules = function() {
         var nextModule = getNextModule();
         if (nextModule) {
           invokeModule(nextModule);
         }
       };
 
-      var invokeModule = function (module) {
+      var invokeModule = function(module) {
 
         var moduleInvocation = that.invoke('reqtangular:' + module, {
           options: {
             'skip-welcome-message': true,
-            'avoid-info' : true
+            'avoid-info': true
           }
         });
 
-        moduleInvocation.on('end', function () {
+        moduleInvocation.on('end', function() {
           invokeRemainingModules();
         });
 
       };
-      
+
       invokeRemainingModules();
 
       done();

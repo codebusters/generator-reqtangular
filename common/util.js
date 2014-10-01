@@ -12,7 +12,8 @@ module.exports = {
   injectIntoJSON: injectIntoJSON,
   injectIntoNav: injectIntoNav,
   registerModule: registerModule,
-  registerLangs: registerLangs
+  registerLangs: registerLangs,
+  getModule: getModule
 };
 
 function rewriteFile(args) {
@@ -161,8 +162,16 @@ function appName(self) {
 
 function registerModule(appPath, module) {
   var constants = JSON.parse(fs.readFileSync(path.join(appPath, 'config/constants.json'), 'utf8'));
-  constants.modules.push(module);
-  fs.writeFileSync(path.join(appPath, 'config/constants.json'), JSON.stringify(constants));
+  var duplicate = false;
+  constants.modules.forEach(function(constantModule) {
+    if (constantModule.name === module.name) {
+      duplicate = true;
+    }
+  });
+  if (!duplicate) {
+    constants.modules.push(module);
+    fs.writeFileSync(path.join(appPath, 'config/constants.json'), JSON.stringify(constants));
+  }
 }
 
 function registerLangs(appPath, langs) {
@@ -176,7 +185,25 @@ function registerLangs(appPath, langs) {
     });
     if (!duplicate) {
       constants.langs.push(item);
+      fs.writeFileSync(path.join(appPath, 'config/constants.json'), JSON.stringify(constants));
     }
   });
-  fs.writeFileSync(path.join(appPath, 'config/constants.json'), JSON.stringify(constants));
 }
+
+
+  /**
+   * Get module from constants file configuration
+   * @param {type} appPath
+   * @param {type} moduleName
+   * @returns {module}
+   */
+  function getModule(appPath, moduleName) {
+    var result;
+    var constants = JSON.parse(fs.readFileSync(path.join(appPath, 'config/constants.json'), 'utf8'));
+    constants.modules.forEach(function(module) {
+      if (module.name === moduleName) {
+        result = module;
+      }
+    });
+    return result;
+  }
