@@ -1,7 +1,7 @@
 
 ![](http://www.codebusters.es/assets/projects/reqtangular/reqtangular_logo_728.png)
 
-Generator-Reqtangular
+Generator-Reqtangular v0.0.7
 =====================
 
 Scaffolding generator for new web projects. Preset integration with AngularJS and Require.
