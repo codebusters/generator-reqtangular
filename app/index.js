@@ -19,10 +19,11 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
         skipInstall: this.options['skip-install'],
         skipMessage: this.options['skip-install'],
         callback: function() {
-          console.log(chalk.bold.green('\nEverything is ready!, just run')
-                  + chalk.bold.yellow(' grunt serve')
-                  + chalk.bold.green(' \nor build distribution version with')
-                  + chalk.bold.yellow(' grunt dist'));
+          console.log(chalk.yellow('┌────────────────────────────────────────────────────────────────┐'));
+          console.log(chalk.yellow('│ ' + chalk.white('Everything is ready!, just run: ') + chalk.blue(' grunt serve')) + chalk.yellow('                   │'));
+          console.log(chalk.yellow('│ ' + chalk.white('or build distribution version with: ') + chalk.blue(' grunt serve')) + chalk.yellow('               │'));
+          console.log(chalk.yellow('│ ' + chalk.white('wiki') + chalk.blue(' https://github.com/codebusters/generator-reqtangular/wiki')) + chalk.yellow(' │'));
+          console.log(chalk.yellow('└────────────────────────────────────────────────────────────────┘'));
         }
       });
     });
