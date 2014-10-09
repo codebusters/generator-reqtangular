@@ -42,6 +42,7 @@ Available generators:
 * [reqtangular:contactModule](#contactModule)
 * [reqtangular:portfolioModule](#portfolioModule)
 * [reqtangular:blogModule](#blogModule)
+* [reqtangular:authModule](#authModule)
 * [reqtangular:theme](#theme)
 * [reqtangular:lang](#lang)
 
