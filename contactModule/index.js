@@ -6,7 +6,7 @@ var path = require('path');
 var fs = require('fs');
 var chalk = require('chalk');
 
-var AboutUsModuleGenerator = yeoman.generators.Base.extend({
+var ContactModuleGenerator = yeoman.generators.Base.extend({
   askForContactData: function() {
     var done = this.async();
     if (!this.options['skip-welcome-message']) {
@@ -149,4 +149,4 @@ var AboutUsModuleGenerator = yeoman.generators.Base.extend({
   }
 });
 
-module.exports = AboutUsModuleGenerator;
+module.exports = ContactModuleGenerator;

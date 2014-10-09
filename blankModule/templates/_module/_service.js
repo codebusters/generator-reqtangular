@@ -8,9 +8,8 @@ define([
           ['APP', '$http', function(APP, $http) {
               return {
                 /**
-                 * Get all categories
-                 * @param {type} cb
-                 * @returns {undefined}
+                 * 
+                 * @returns {String}
                  */
                 helloWorld: function() {
                   return "Hello";

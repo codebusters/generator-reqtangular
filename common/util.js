@@ -13,7 +13,8 @@ module.exports = {
   injectIntoNav: injectIntoNav,
   registerModule: registerModule,
   registerLangs: registerLangs,
-  getModule: getModule
+  getModule: getModule,
+  getModulesInstalled: getModulesInstalled
 };
 
 function rewriteFile(args) {
@@ -191,19 +192,28 @@ function registerLangs(appPath, langs) {
 }
 
 
-  /**
-   * Get module from constants file configuration
-   * @param {type} appPath
-   * @param {type} moduleName
-   * @returns {module}
-   */
-  function getModule(appPath, moduleName) {
-    var result;
-    var constants = JSON.parse(fs.readFileSync(path.join(appPath, 'config/constants.json'), 'utf8'));
-    constants.modules.forEach(function(module) {
-      if (module.name === moduleName) {
-        result = module;
-      }
-    });
-    return result;
-  }
+/**
+ * Get module from constants file configuration
+ * @param {type} appPath
+ * @param {type} moduleName
+ * @returns {module}
+ */
+function getModule(appPath, moduleName) {
+  var result;
+  var constants = JSON.parse(fs.readFileSync(path.join(appPath, 'config/constants.json'), 'utf8'));
+  constants.modules.forEach(function(module) {
+    if (module.name === moduleName) {
+      result = module;
+    }
+  });
+  return result;
+}
+
+/**
+ * Get aaray of all modules installed.
+ * @returns {@exp;constants@pro;modules}
+ */
+function getModulesInstalled() {
+  var constants = JSON.parse(fs.readFileSync(path.join(appPath, 'config/constants.json'), 'utf8'));
+  return constants.modules;
+}

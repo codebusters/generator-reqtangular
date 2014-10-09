@@ -12,7 +12,6 @@ var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
     if (!this.options['skip-welcome-message']) {
       this.log(yosay('Welcome to the marvelous Reqtangular prebuilt modules generator!'));
     }
-    console.log(angularUtils.getModule(this.appPath, 'blog'))
     this.prompt([
       {
         type: 'checkbox',
@@ -22,27 +21,27 @@ var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
           {
             name: 'About Us',
             value: 'aboutUsModule',
-            checked: angularUtils.getModule(this.appPath, 'about') ? true :false
+            checked: angularUtils.getModule(this.appPath, 'about') ? true : false
           },
           {
             name: 'Contact',
             value: 'contactModule',
-            checked: angularUtils.getModule(this.appPath, 'contact') ? true :false
+            checked: angularUtils.getModule(this.appPath, 'contact') ? true : false
           },
           {
             name: 'Portfolio',
             value: 'portfolioModule',
-            checked: angularUtils.getModule(this.appPath, 'portfolio') ? true :false
+            checked: angularUtils.getModule(this.appPath, 'portfolio') ? true : false
           },
           {
             name: 'Blog',
             value: 'blogModule',
-            checked: angularUtils.getModule(this.appPath, 'blog') ? true :false
+            checked: angularUtils.getModule(this.appPath, 'blog') ? true : false
           },
           {
             name: 'Auth',
             value: 'authModule',
-            checked: angularUtils.getModule(this.appPath, 'auth') ? true :false
+            checked: angularUtils.getModule(this.appPath, 'auth') ? true : false
           }
         ], validate: function(answer) {
           if (answer.length < 1) {

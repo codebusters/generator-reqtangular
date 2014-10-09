@@ -38,6 +38,7 @@ var BlankModuleGenerator = yeoman.generators.Base.extend({
     }.bind(this));
   },
   askForExtendedFunctionality: function() {
+    //verschlimmbessern
     var done = this.async();
     this.prompt([
       {
@@ -58,8 +59,12 @@ var BlankModuleGenerator = yeoman.generators.Base.extend({
         ]
       }
     ], function(answers) {
-      this.directives = answers.moduleFunctions.indexOf('directives') !== -1 ? true : false;
-      this.services = answers.moduleFunctions.indexOf('services') !== -1 ? true : false;
+      this.directives = false;
+      this.services = false;
+      if (answers.moduleFunctions) {
+        this.directives = answers.moduleFunctions.indexOf('directives') !== -1 ? true : false;
+        this.services = answers.moduleFunctions.indexOf('services') !== -1 ? true : false;
+      }
       done();
     }.bind(this));
   },

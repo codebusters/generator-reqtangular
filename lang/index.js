@@ -5,8 +5,8 @@ var angularUtils = require('../common/util.js');
 var path = require('path');
 var chalk = require('chalk');
 
-var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
-  askModules: function() {
+var LangModuleGenerator = yeoman.generators.Base.extend({
+  askForData: function() {
     var done = this.async();
     if (!this.options['skip-welcome-message']) {
       this.log(yosay('Welcome to the marvelous Reqtangular languages generator!'));
@@ -49,5 +49,5 @@ var PreBuiltModuleGenerator = yeoman.generators.Base.extend({
     });
   }
 });
-module.exports = PreBuiltModuleGenerator;
+module.exports = LangModuleGenerator;
 

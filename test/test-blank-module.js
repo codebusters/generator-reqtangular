@@ -31,7 +31,7 @@ describe('reqtangular:module generator', function () {
         'skip-welcome-message': true,
         'avoid-info': true
       });
-
+      this.directives = true;
       // need app previously ran
       this.app.run({}, function () {
         done();
@@ -62,57 +62,57 @@ describe('reqtangular:module generator', function () {
 
   });
 
-  it('module applies moduleName to files', function (done) {
+  it('module applies moduleName to files', function(done) {
 
     helpers.mockPrompt(this.module, {
       'moduleName': moduleName
     });
 
-    this.module.run({}, function () {
+    this.module.run({}, function() {
 
       // test_ctrl.js
       helpers.assertFileContent('app/scripts/modules/test/test_ctrl.js',
-        new RegExp('\'\\./test_route\'')
-      );
+              new RegExp('\'\\./test_route\'')
+              );
       helpers.assertFileContent('app/scripts/modules/test/test_ctrl.js',
-        new RegExp('angular\\.module\\(\'TestModule\', \\[\'TestModule\\.routing\'\\]\\)')
-      );
+              new RegExp('angular\\.module\\(\'TestModule\', \\[\'TestModule\\.routing\'\\]\\)')
+              );
       helpers.assertFileContent('app/scripts/modules/test/test_ctrl.js',
-        new RegExp('\\.controller\\(\'TestController\', \\[\'\\$scope\', \'\\$log\'')
-      );
+              new RegExp('\\.controller\\(\'TestController\', \\[\'\\$scope\', \'\\$log\'')
+              );
 
       // test_route.js
       helpers.assertFileContent('app/scripts/modules/test/test_route.js',
-        new RegExp('\'text!\./templates/test\\.tpl\\.html\'')
-      );
+              new RegExp('\'text!\./templates/test\\.tpl\\.html\'')
+              );
       helpers.assertFileContent('app/scripts/modules/test/test_route.js',
-        new RegExp('\\], function\\(angular, template\\) {')
-      );
+              new RegExp('\\], function\\(angular, template\\) {')
+              );
       helpers.assertFileContent('app/scripts/modules/test/test_route.js',
-        new RegExp('angular\.module\\(\'TestModule\.routing\', \\[\'ngRoute\'\\]\\)\\.config\\(function\\(\\$routeProvider\\) {')
-      );
+              new RegExp('angular\.module\\(\'TestModule\.routing\', \\[\'ngRoute\'\\]\\)\\.config\\(function\\(\\$routeProvider\\) {')
+              );
       helpers.assertFileContent('app/scripts/modules/test/test_route.js',
-        new RegExp('\\$routeProvider\\.when\\(\'/test\', {')
-      );
+              new RegExp('\\$routeProvider\\.when\\(\'/test\', {')
+              );
       helpers.assertFileContent('app/scripts/modules/test/test_route.js',
-        new RegExp('template: template,')
-      );
+              new RegExp('template: template,')
+              );
       helpers.assertFileContent('app/scripts/modules/test/test_route.js',
-        new RegExp('controller: \'TestController\'')
-      );
+              new RegExp('controller: \'TestController\'')
+              );
 
       // template
       helpers.assertFileContent('app/scripts/modules/test/templates/test.tpl.html',
-        new RegExp('<p>Hello! This is the view for your new Test module.</p>')
-      );
+              new RegExp('<p>Hello! This is the view for your new Test module.</p>')
+              );
 
       // app
       helpers.assertFileContent('app/scripts/app.js',
-        new RegExp('\'modules/test/test_ctrl\'')
-      );
+              new RegExp('\'modules/test/test_ctrl\'')
+              );
       helpers.assertFileContent('app/scripts/app.js',
-        new RegExp('\'TestModule\'')
-      );
+              new RegExp('\'TestModule\'')
+              );
 
       done();
     });
@@ -121,36 +121,36 @@ describe('reqtangular:module generator', function () {
 
   var addedToNavRegex = '<li ng-class="{ active: menuCtrl\\.isSelected\\(\'test\'\\) }">\\s*<a ng-click="menuCtrl\\.selectMenu\\(\'test\'\\)" ng-href="#/test" translate="test"></a></li>\\s*<!-- navAnchor \\(do not delete!\\)-->';
 
-  it('adds link to nav', function (done) {
+  it('adds link to nav', function(done) {
 
     helpers.mockPrompt(this.module, {
       'moduleName': moduleName,
       'addToNav': true
     });
 
-    this.module.run({}, function () {
+    this.module.run({}, function() {
 
       helpers.assertFileContent('app/scripts/modules/main/templates/main.html',
-        new RegExp(addedToNavRegex)
-      );
+              new RegExp(addedToNavRegex)
+              );
 
       done();
     });
 
   });
 
-  it('does not add link to nav', function (done) {
+  it('does not add link to nav', function(done) {
 
     helpers.mockPrompt(this.module, {
       'moduleName': moduleName,
       'addToNav': false
     });
 
-    this.module.run({}, function () {
+    this.module.run({}, function() {
 
       helpers.assertNoFileContent('app/scripts/modules/main/templates/main.html',
-        new RegExp(addedToNavRegex)
-      );
+              new RegExp(addedToNavRegex)
+              );
 
       done();
     });
@@ -159,17 +159,17 @@ describe('reqtangular:module generator', function () {
 
   var addedToNavRegex = '<li ng-class="{ active: menuCtrl\\.isSelected\\(\'test\'\\) }">\\s*<a ng-click="menuCtrl\\.selectMenu\\(\'test\'\\)" ng-href="#/test" translate="module.test.title"></a></li>\\s*<!-- navAnchor \\(do not delete!\\)-->';
 
-  it('adds placeholeder translations', function (done) {
+  it('adds placeholeder translations', function(done) {
 
     helpers.mockPrompt(this.module, {
       'moduleName': moduleName
     });
 
-    this.module.run({}, function () {
+    this.module.run({}, function() {
 
       helpers.assertFileContent('app/scripts/modules/lang/translations/en.json',
-        new RegExp('"module.test.title": "Test",\\s*"IMPORTANT_NEEDLE_DATA": "do not remove"')
-      );
+              new RegExp('"module.test.title": "Test",\\s*"IMPORTANT_NEEDLE_DATA": "do not remove"')
+              );
 
       done();
     });

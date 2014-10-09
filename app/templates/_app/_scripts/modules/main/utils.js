@@ -19,6 +19,20 @@ define([
                     }
                   });
                   return result;
+                },
+                /**
+                 * Get module configuration by module name.
+                 * @param {String} moduleName
+                 * @returns {JSON}
+                 */
+                getModule: function(moduleName) {
+                  var result;
+                  APP.modules.forEach(function(module) {
+                    if (module.name === moduleName) {
+                      result = module;
+                    }
+                  });
+                  return result;
                 }
               };
             }]);

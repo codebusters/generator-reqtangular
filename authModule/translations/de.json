@@ -1,0 +1,7 @@
+{
+  "moduleName": "Genehmigung",
+  "mail": "E-Mail",
+  "password": "Passwort",
+  "welcome": "Willkommen",
+  "error_401" : "Zugriff verweigert"
+}

@@ -7,8 +7,8 @@ var fs = require('fs');
 var chalk = require('chalk');
 
 
-var AboutUsModuleGenerator = yeoman.generators.Base.extend({
-  askForContactData: function() {
+var PortfolioModuleGenerator = yeoman.generators.Base.extend({
+  askForData: function() {
     var done = this.async();
     if (!this.options['skip-welcome-message']) {
       this.log(yosay('Welcome to the marvelous Reqtangular portfolio module generator!'));
@@ -110,4 +110,4 @@ var AboutUsModuleGenerator = yeoman.generators.Base.extend({
   }
 });
 
-module.exports = AboutUsModuleGenerator;
+module.exports = PortfolioModuleGenerator;

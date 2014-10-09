@@ -6,14 +6,27 @@ var path = require('path');
 var fs = require('fs');
 var chalk = require('chalk');
 
-
-var BlogModuleGenerator = yeoman.generators.Base.extend({
-  moduleName: function() {
+var AboutUsModuleGenerator = yeoman.generators.Base.extend({
+  askForData: function() {
+    var done = this.async();
     if (!this.options['skip-welcome-message']) {
-      this.log(yosay('Welcome to the marvelous Reqtangular blog module generator!'));
+      this.log(yosay('Welcome to the marvelous Reqtangular authoring module generator!'));
     }
-
-    var moduleName = this.options['moduleName'] || 'blog';
+    var questions = [
+      {
+        type: 'input',
+        name: 'rest',
+        message: 'Enter REST service address',
+        default: 'http://127.0.0.1:8080'
+      }
+    ];
+    this.prompt(questions, function(answers) {
+      this.restService = answers.rest;
+      done();
+    }.bind(this));
+  },
+  moduleConfig: function() {
+    var moduleName = this.options['moduleName'] || 'auth';
     this.addToNav = true;
     this.moduleName = this._.underscored(moduleName);
     this.moduleNameTitle = this._.classify(moduleName);
@@ -37,31 +50,13 @@ var BlogModuleGenerator = yeoman.generators.Base.extend({
     this.copy('_module/_templates/_template.html',
             path.join(this.modulePath, 'templates', this.moduleName + '.tpl.html'));
 
-    this.mkdir(path.join(this.modulePath, 'templates', 'partials'));
-    this.copy('_module/_templates/_partials/_templateEntries.html',
-            path.join(this.modulePath, 'templates', 'partials', this.moduleName + 'Entries.tpl.html'));
-
-    this.copy('_module/_templates/_partials/_templateEntry.html',
-            path.join(this.modulePath, 'templates', 'partials', this.moduleName + 'Entry.tpl.html'));
-
     this.copy('_module/_controller.js', path.join(this.modulePath, this.controllerFile + '.js'));
 
     this.copy('_module/_route.js', path.join(this.modulePath, this.routeFile + '.js'));
 
     this.copy('_module/_service.js', path.join(this.modulePath, this.serviceFile + '.js'));
 
-    //Directives
     this.copy('_module/_directive.js', path.join(this.modulePath, this.directiveFile + '.js'));
-    this.copy('_module/_templates/_templateCategories.html',
-            path.join(this.modulePath, 'templates', this.moduleName + 'Categories.tpl.html'));
-    this.copy('_module/_templates/_templateLastEntries.html',
-            path.join(this.modulePath, 'templates', this.moduleName + 'LastEntries.tpl.html'));
-    this.directory('_module/_img', path.join(this.modulePath, 'img'));
-
-    //MockedData
-    this.copy('_module/_mockedData.json', path.join(this.modulePath, 'mockedData.json'));
-
-
   },
   injectDependenciesToApp: function() {
     angularUtils.injectIntoFile(
@@ -106,10 +101,11 @@ var BlogModuleGenerator = yeoman.generators.Base.extend({
   registerModule: function() {
     var module = {
       'name': this.moduleName,
-      'navBar': this.addToNav
+      'navBar': this.addToNav,
+      'rest': this.restService
     };
     angularUtils.registerModule(this.appPath, module);
   }
 });
 
-module.exports = BlogModuleGenerator;
+module.exports = AboutUsModuleGenerator;

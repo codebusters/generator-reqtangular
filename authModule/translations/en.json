@@ -1,0 +1,7 @@
+{
+  "moduleName": "Authoring",
+  "mail": "E-Mail",
+  "password": "Password",
+  "welcome": "Welcome",
+  "error_401": "Access denied"
+}
