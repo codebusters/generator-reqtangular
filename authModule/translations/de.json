@@ -3,5 +3,7 @@
   "mail": "E-Mail",
   "password": "Passwort",
   "welcome": "Willkommen",
-  "error_401" : "Zugriff verweigert"
+  "error_0": "Es konnte keine Verbindung zum Server",
+  "error_401": "Zugriff verweigert"
 }
+

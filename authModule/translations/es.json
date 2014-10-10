@@ -3,5 +3,6 @@
   "mail": "E-Mail",
   "password": "Contraseña",
   "welcome": "Bienvenido",
+  "error_0": "No se ha podído conectar con el servidor",
   "error_401": "Acceso denegado"
 }
