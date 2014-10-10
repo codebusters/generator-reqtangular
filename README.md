@@ -92,6 +92,8 @@ yo reqtangular:lang
 ***
 
 [![](https://github.com/codebusters/generator-reqtangular/blob/master/resources/img/reqtangular_banner_250x50.png)](https://github.com/codebusters/generator-reqtangular/wiki)
+
+[![](https://github.com/codebusters/generator-reqtangular/blob/master/resources/img/FB_FindUsOnFacebook-100.png)](https://www.facebook.com/reqtangular)
 * * *
 [![](http://www.codebusters.es/assets/codebusters_logo.png)](http://www.codebusters.es)
 
