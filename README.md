@@ -3,6 +3,7 @@
 
 Generator-Reqtangular v0.0.8
 =====================
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/codebusters/generator-reqtangular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Scaffolding generator for new web projects. Preset integration with AngularJS and Require.
 
