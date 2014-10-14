@@ -93,12 +93,10 @@ yo reqtangular:lang
 ```
 
 ***
+[![reqtangular](https://github.com/codebusters/generator-reqtangular/blob/master/resources/img/reqtangular_banner_250x50.png)](https://github.com/codebusters/generator-reqtangular/wiki)
 
-[![](https://github.com/codebusters/generator-reqtangular/blob/master/resources/img/reqtangular_banner_250x50.png)](https://github.com/codebusters/generator-reqtangular/wiki)
-
-[![](https://github.com/codebusters/generator-reqtangular/blob/master/resources/img/FB_FindUsOnFacebook-100.png)](https://www.facebook.com/reqtangular)
-
-[![](https://github.com/codebusters/generator-reqtangular/blob/master/resources/img/bird_blue_32.png)](https://twitter.com/reqtangular)
+[![facebook](https://github.com/codebusters/generator-reqtangular/blob/master/resources/img/FB_FindUsOnFacebook-100.png)](https://www.facebook.com/reqtangular)
+[![twitter](https://github.com/codebusters/generator-reqtangular/blob/master/resources/img/bird_blue_32.png)](https://twitter.com/reqtangular)
 
 * * *
 [![](http://www.codebusters.es/assets/codebusters_logo.png)](http://www.codebusters.es)
