@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/codebusters/generator-reqtangular.png?label=ready&title=Ready)](https://waffle.io/codebusters/generator-reqtangular)
 
 ![](http://www.codebusters.es/assets/projects/reqtangular/reqtangular_logo_728.png)
 
