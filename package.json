@@ -1,7 +1,7 @@
 {
   "name": "generator-reqtangular",
   "version": "0.0.8",
-  "description": "yeoman-angular-require-bootstrap-less-generator",
+  "description": "AngularJS RequireJS Bootstrap. Yeoman applications generator",
   "license": "Apache License",
   "main": "app/index.js",
   "repository": "https://github.com/codebusters/generator-reqtangular",
