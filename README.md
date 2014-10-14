@@ -22,11 +22,11 @@ Based on generation framework Yeoman, reqtangular generates new integrated struc
 
 Install `generator-reqtangular`:
 ```
-npm install -g generator-reqtangular
+$ npm install -g generator-reqtangular
 ```
 Make a new directory, and `cd` into it:
 ```
-mkdir my-new-project && cd $_
+$ mkdir my-new-project && cd $_
 ```
 
 Run `yo reqtangular`
@@ -55,15 +55,16 @@ Available generators:
 Generates a new module in `app/scripts/modules`.
 Example:
 ```bash
-yo reqtangular:module
+$ yo reqtangular:module
 ```
+
 ### Theme
 Theme module injector.
 Examples:
 ```bash
-yo reqtangular:theme
+$ yo reqtangular:theme
 
-yo reqtangular:theme codebusters
+$ yo reqtangular:theme codebusters
 ```
 
 #### Preconfigured themes:
@@ -89,7 +90,7 @@ Language module injector. Provides support for translations into several languag
 
 Example:
 ```bash
-yo reqtangular:lang
+$ yo reqtangular:lang
 ```
 
 ***
