@@ -4,7 +4,8 @@ var path = require('path');
 var yoGen = require('yeoman-generator');
 var helpers = yoGen.test;
 var generators = yoGen.generators;
-
+/*
+// integration! disable for now
 describe('reqtangular:prebuiltModule generator', function () {
 
   var testDirectory = path.join(__dirname, 'temp');
@@ -25,7 +26,6 @@ describe('reqtangular:prebuiltModule generator', function () {
   });
 
   it('prebuiltModule test integration)', function (done) {
-//integracion!!!!!!!!!!!!!!!
     var contactModule = require('../contactModule/index');
     var aboutUsModule = require('../aboutUsModule/index');
 
@@ -48,5 +48,5 @@ describe('reqtangular:prebuiltModule generator', function () {
     });
 
   });
-
 });
+*/

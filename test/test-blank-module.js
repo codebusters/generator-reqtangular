@@ -4,7 +4,7 @@ var path = require('path');
 //var testUtil = require('../common/testUtil');
 var helpers = require('yeoman-generator').test;
 
-describe('reqtangular:module generator', function () {
+describe('reqtangular:module blank generator (test-blank-module)', function () {
 
   var moduleName = 'test';
   var appName = 'unitTestApp';
@@ -15,7 +15,9 @@ describe('reqtangular:module generator', function () {
         return done(err);
       }
 
-      this.app = helpers.createGenerator('reqtangular:app',  ['../../app'], [appName], {
+      var deps = ['../../app', '../../theme'];
+
+      this.app = helpers.createGenerator('reqtangular:app', deps , [appName], {
         'appPath': '../../app',
         'skip-welcome-message': true,
         'skip-install': true
@@ -75,10 +77,10 @@ describe('reqtangular:module generator', function () {
               new RegExp('\'\\./test_route\'')
               );
       helpers.assertFileContent('app/scripts/modules/test/test_ctrl.js',
-              new RegExp('angular\\.module\\(\'TestModule\', \\[\'TestModule\\.routing\'\\]\\)')
+              new RegExp('angular\\.module\\(\\s*\'TestModule\',\\s*\\[\'AppModule\.configuration\', \'TestModule\\.routing\'\\s*\\]\\s*\\)')
               );
       helpers.assertFileContent('app/scripts/modules/test/test_ctrl.js',
-              new RegExp('\\.controller\\(\'TestController\', \\[\'\\$scope\', \'\\$log\'')
+              new RegExp('\\.controller\\(\'TestController\',\\s*\\[\\s*\'APP\',\\s*\'\\$scope\',\\s*\'\\$log\'')
               );
 
       // test_route.js
@@ -106,6 +108,10 @@ describe('reqtangular:module generator', function () {
               new RegExp('<p>Hello! This is the view for your new Test module.</p>')
               );
 
+      helpers.assertFileContent('app/scripts/modules/test/templates/test.tpl.html',
+              new RegExp('<strong translate="module.test.moduleName"></strong>')
+              );
+
       // app
       helpers.assertFileContent('app/scripts/app.js',
               new RegExp('\'modules/test/test_ctrl\'')
@@ -119,7 +125,9 @@ describe('reqtangular:module generator', function () {
 
   });
 
-  var addedToNavRegex = '<li ng-class="{ active: menuCtrl\\.isSelected\\(\'test\'\\) }">\\s*<a ng-click="menuCtrl\\.selectMenu\\(\'test\'\\)" ng-href="#/test" translate="test"></a></li>\\s*<!-- navAnchor \\(do not delete!\\)-->';
+/* It seems Jose removed Navigation, keep this in case is added back
+
+  var addedToNavRegex = '<li ng-class="{ active: menuCtrl\\.isSelected\\(\'test\'\\) }">\\s*<a ng-click="menuCtrl\\.selectMenu\\(\'test\'\\)" ng-href="#/test" translate="module.test.title"></a></li>\\s*<!-- navAnchor \\(do not delete!\\)-->';
 
   it('adds link to nav', function(done) {
 
@@ -130,7 +138,7 @@ describe('reqtangular:module generator', function () {
 
     this.module.run({}, function() {
 
-      helpers.assertFileContent('app/scripts/modules/main/templates/main.html',
+      helpers.assertFileContent('app/scripts/modules/test/templates/test.tpl.html',
               new RegExp(addedToNavRegex)
               );
 
@@ -149,15 +157,19 @@ describe('reqtangular:module generator', function () {
     this.module.run({}, function() {
 
       helpers.assertNoFileContent('app/scripts/modules/main/templates/main.html',
-              new RegExp(addedToNavRegex)
+              new RegExp(addedModuleName)
               );
 
       done();
     });
 
   });
+*/
 
-  var addedToNavRegex = '<li ng-class="{ active: menuCtrl\\.isSelected\\(\'test\'\\) }">\\s*<a ng-click="menuCtrl\\.selectMenu\\(\'test\'\\)" ng-href="#/test" translate="module.test.title"></a></li>\\s*<!-- navAnchor \\(do not delete!\\)-->';
+
+
+
+
 
   it('adds placeholeder translations', function(done) {
 
@@ -168,7 +180,7 @@ describe('reqtangular:module generator', function () {
     this.module.run({}, function() {
 
       helpers.assertFileContent('app/scripts/modules/lang/translations/en.json',
-              new RegExp('"module.test.title": "Test",\\s*"IMPORTANT_NEEDLE_DATA": "do not remove"')
+              new RegExp('"module\.test":{ "moduleName" : "Test"},\\s*"IMPORTANT_NEEDLE_DATA": "do not remove"')
               );
 
       done();

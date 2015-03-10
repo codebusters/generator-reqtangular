@@ -41,13 +41,13 @@ var NgRequireModuleGenerator = yeoman.generators.Base.extend({
       }
     }
   },
-  generateCssFIle: function() {
+  generateCssFile: function() {
     console.log(chalk.bold.green('Processing theme styles files:'));
     generateFile(this.themePath, '/styles/css/', '_main.css', function(result) {
 //      that.copy(__dirname + themePath + '/_main.css', 'app/styles/main.css');
     });
   },
-  generateJsFIle: function() {
+  generateJsFile: function() {
     console.log(chalk.bold.green('Processing theme js files:'));
     generateFile(this.themePath, '/js/', '_vendor.js', function(result) {
 //      that.copy(__dirname + themePath + '/_vendor.js', 'app/vendor.js');
@@ -56,8 +56,8 @@ var NgRequireModuleGenerator = yeoman.generators.Base.extend({
   copyFiles: function() {
     this.directory(__dirname + this.themePath + '/images', 'app/images');
     this.directory(__dirname + this.themePath + '/fonts', 'app/fonts');
-    this.copy(__dirname + this.themePath + '/_main.css', 'app/styles/main.css');
-    this.copy(__dirname + this.themePath + '/_vendor.js', 'app/vendor.js');
+    this.copy(__dirname + this.themePath + '/styles/css/_main.css', 'app/styles/main.css');
+    this.copy(__dirname + this.themePath + '/js/_vendor.js', 'app/vendor.js');
   }
 });
 
