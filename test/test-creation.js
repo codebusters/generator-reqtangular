@@ -3,12 +3,10 @@
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 
-describe('reqtangular generator', function () {
+describe('reqtangular generator (main generator)', function () {
 
   var appName = 'unitTestApp';
-  var deps = [
-    '../../app'
-  ];
+  var deps = ['../../app', '../../theme'];
 
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
@@ -25,8 +23,7 @@ describe('reqtangular generator', function () {
       helpers.mockPrompt(this.app, {
         'appName': appName,
         'less' : true,
-        'seo' : true,
-        'theme': "snow"
+        'seo' : true
       });
 
       done();

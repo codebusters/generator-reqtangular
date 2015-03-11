@@ -7,12 +7,16 @@ var chalk = require('chalk');
 
 var context = {};
 
+var config = {
+  askForSEO : false
+};
 
 var NgRequireGenerator = yeoman.generators.Base.extend({
   init: function() {
     this.pkg = require('../package.json');
     this.less = false;
     this.on('end', function() {
+
       this.installDependencies({
         bower: true,
         npm: true,
@@ -26,6 +30,7 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
           console.log(chalk.yellow('└────────────────────────────────────────────────────────────────┘'));
         }
       });
+
     });
   },
   askFor: function() {
@@ -57,52 +62,46 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
       done();
     }.bind(this));
   },
-//  askForLess: function() {
-//    var done = this.async();
-//
-//    this.prompt([{
-//        type: 'confirm',
-//        name: 'less',
-//        message: 'Would you like to use Less?',
-//        default: false
-//      }], function(props) {
-//      this.less = props.less;
-//
-//      done();
-//    }.bind(this));
-//  },
+
   askForSEO: function() {
-    var done = this.async();
+
     context.indexTitle = '';
     context.indexDescription = '';
-    this.prompt([{
-        type: 'confirm',
-        name: 'seo',
-        message: 'Would you like to configure basic SEO data?',
-        default: true
-      }], function(props) {
-      if (props.seo) {
-        var questions = [
-          {
-            type: "input",
-            name: "indexTitle",
-            message: "Enter index title"
-          },
-          {
-            type: "input",
-            name: "indexDescription",
-            message: "Enter index description"
-          }
-        ];
-        this.prompt(questions, function(answers) {
-          context.indexTitle = answers.indexTitle;
-          context.indexDescription = answers.indexDescription;
+
+    if (config.askForSEO) {
+
+      var done = this.async();
+      this.prompt([{
+          type: 'confirm',
+          name: 'seo',
+          message: 'Would you like to configure basic SEO data?',
+          default: true
+        }], function(props) {
+        if (props.seo) {
+          var questions = [
+            {
+              type: "input",
+              name: "indexTitle",
+              message: "Enter index title"
+            },
+            {
+              type: "input",
+              name: "indexDescription",
+              message: "Enter index description"
+            }
+          ];
+          this.prompt(questions, function(answers) {
+            context.indexTitle = answers.indexTitle;
+            context.indexDescription = answers.indexDescription;
+            done();
+          });
+        } else {
           done();
-        });
-      } else {
-        done();
-      }
-    }.bind(this));
+        }
+      }.bind(this));
+
+    }
+
   },
   app: function() {
     context.appConfig = {
@@ -144,16 +143,21 @@ var NgRequireGenerator = yeoman.generators.Base.extend({
     this.copy('_app/_favicon.ico', 'app/favicon.ico');
     this.copy('_app/htaccess', 'app/.htaccess');
     this.copy('_app/_robots.txt', 'app/robots.txt');
-    this.copy('_app/_vendor.js', 'app/vendor.js');
 
     this.template('_app/_index.template.html', 'app/index.template.html', context);
-    //Copy style file
-    if (this.less) {
-      this.copy('_app/_styles/codebusters.less', 'app/styles/main.less');
-    } else {
-      this.copy('_app/_styles/codebusters.css', 'app/styles/main.css');
-    }
   }
+  ,
+  applyDefaultTheme: function() {
+    // TODO add tests
+    this.invoke('reqtangular:theme', {
+      options: {
+        theme: 'codeBusters', 
+        'skip-welcome-message' : true
+      }
+    });
+
+  }
+
 });
 
 module.exports = NgRequireGenerator;

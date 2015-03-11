@@ -24,8 +24,7 @@ describe('reqtangular:module blank generator (test-blank-module)', function () {
       });
 
       helpers.mockPrompt(this.app, {
-        'appName': appName,
-        'theme': "snow"
+        'appName': appName
       });
 
       this.module = helpers.createGenerator('reqtangular:blankModule', ['../../blankModule'], [], {
