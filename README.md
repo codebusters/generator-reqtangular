@@ -2,7 +2,7 @@
 
 ![](http://www.codebusters.es/assets/projects/reqtangular/reqtangular_logo_728.png)
 
-Generator-Reqtangular v0.0.8
+Generator-Reqtangular v0.0.9
 =====================
 [![Stories in Ready](https://badge.waffle.io/codebusters/generator-reqtangular.png?label=ready&title=Ready)](https://waffle.io/codebusters/generator-reqtangular)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/codebusters/generator-reqtangular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
